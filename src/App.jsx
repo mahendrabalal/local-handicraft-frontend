@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react';
 import { getGreeting } from './api';
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import SignupPage from './pages/SignupPage';
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/Home';
+import isPrivate from './components/IsPrivate';
+import IsAnon from './components/IsAnon';
 
 import './App.css'
 
 function App() {
+  /*
   const [greeting, setGreeting] = useState(''); // State to hold greeting message
   const [loading, setLoading] = useState(true); // State to handle loading status
   const [error, setError] = useState(null); // State to handle errors
@@ -27,13 +35,19 @@ function App() {
 
   if (loading) return <h1>Loading...</h1>; // Display loading message
   if (error) return <h1>{error}</h1>; // Display error message
-  
 
+*/
   return (
-    <>
+    <div className="App">
+    <Navbar />
+
+    <Routes>      
+      <Route path='/' element={<HomePage />} />
+      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/login" element = {<LoginPage />} />
       
-        <h1>Hey this is frontend</h1>
-    </>
+    </Routes>
+  </div>
   )
 }
 
