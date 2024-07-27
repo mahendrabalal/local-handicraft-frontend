@@ -1,42 +1,56 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../context/auth.context";
-
+import "./Navbar.css";
 
 function Navbar() {
-   // Subscribe to the AuthContext to gain access to
-  // the values from AuthContext.Provider `value` prop
-  const {isLoggedIn, user, logOutUser} = useContext(AuthContext);
-  
-  
-   //  Update the rendering logic to display different content 
-  //  depending on whether the user is logged in or not
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <nav>
-        <Link to="/">
-            <button>Home</button>
+    <nav className="navbar">
+      <div className="navbar-container">
+      <Link to="/" className="navbar-brand">
+          <img src="/src/assets/logo.png" alt="Logo" className="navbar-logo" />
         </Link>
 
-        {/*    UPDATE     */}
-        {isLoggedIn && (  
-            <>
-            <Link to="/projects">
-                <button>Project</button>
-            </Link>
-            <button onClick={logOutUser}>Logout</button>
-            <span>{user && user.name}</span>
-            </>
-        )}
+        <button className="navbar-toggle" onClick={handleMenuToggle} aria-label="Toggle navigation">
+          <span className="navbar-toggle-icon"></span>
+        </button>
 
-        {!isLoggedIn && (
+        <ul className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
+          <li>
+            <Link to="/" className="navbar-item">Home</Link>
+          </li>
+          
+          {isLoggedIn ? (
             <>
-                <Link to="/signup"><button>Sign Up</button></Link>
-                <Link to="/login"><button>Login</button></Link>
+              <li>
+                <Link to="/projects" className="navbar-item">Project</Link>
+              </li>
+              <li>
+                <button onClick={logOutUser} className="navbar-button">Logout</button>
+              </li>
+              <li className="navbar-user">{user && user.name}</li>
             </>
-        )}
+          ) : (
+            <>
+              <li>
+                <Link to="/signup" className="navbar-item">Sign Up</Link>
+              </li>
+              <li>
+                <Link to="/login" className="navbar-item">Login</Link>
+              </li>
+            </>
+          )}
+        </ul>
+      </div>
     </nav>
-  )
+  );
 }
 
 export default Navbar;

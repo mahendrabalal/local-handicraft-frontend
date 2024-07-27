@@ -1,16 +1,23 @@
 import { useEffect, useState } from 'react';
-import { getGreeting } from './api';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/Home';
-import isPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
+import DashboardPage from './pages/DashboardPage';
+import DashboardHome from './components/DashboardHome';
+import UserProfile from './components/UserProfile';
+import Settings from './components/Setting';
+import IsPrivate from './components/IsPrivate';
+import ConnectionStatus from './components/ConnectionStatus';
+
 
 import './App.css'
 
 function App() {
+
+
   /*
   const [greeting, setGreeting] = useState(''); // State to hold greeting message
   const [loading, setLoading] = useState(true); // State to handle loading status
@@ -40,13 +47,22 @@ function App() {
   return (
     <div className="App">
     <Navbar />
-
+    <main className='main-content'>
     <Routes>      
-      <Route path='/' element={<HomePage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/login" element = {<LoginPage />} />
+      <Route path='/' element={<HomePage />} />
+      <Route path="/dashboard" element={<IsPrivate><DashboardPage /></IsPrivate>}>
+        <Route path="home" element={<DashboardHome />} />
+        <Route path="profile" element={<UserProfile />} />
+        <Route path="settings" element={<Settings />} />
+      </Route>
+      
+
       
     </Routes>
+    </main>
+    <ConnectionStatus />
   </div>
   )
 }

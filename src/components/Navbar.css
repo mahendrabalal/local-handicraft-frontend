@@ -1,0 +1,135 @@
+/* Navbar styles */
+.navbar {
+    background-color: #ddd2d2;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space out the logo and links */
+    width: 100%;
+    max-width: 1200px; /* Optional: Limit max-width for better alignment */
+    margin: 0 auto;
+  }
+  
+  /* Navbar brand */
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .navbar-logo {
+    height: 40px; /* Adjust height of the logo */
+  }
+  
+  /* Navigation links container */
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center items horizontally */
+    list-style: none;
+    flex: 1; /* Make it take remaining space */
+    margin-left: 20px;
+  }
+  
+  .navbar-item {
+    margin: 0 20px; /* Space between items */
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-item:hover {
+    color: #f0a500;
+  }
+  
+  .navbar-button {
+    margin: 0 20px; /* Space between items */
+    padding: 5px 10px;
+    background-color: #f00;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .navbar-button:hover {
+    background-color: #d00;
+  }
+  
+  .navbar-user {
+    margin: 0 20px; /* Space between items */
+    color: #fff;
+  }
+  
+  /* Mobile menu button */
+  .navbar-toggle {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .navbar-toggle-icon {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-toggle-icon::before,
+  .navbar-toggle-icon::after {
+    content: '';
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-toggle-icon::before {
+    top: -8px;
+  }
+  
+  .navbar-toggle-icon::after {
+    bottom: -8px;
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 350px) {
+    .navbar-links {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      padding: 10px;
+      z-index: 1000; /* Ensure dropdown menu is on top */
+    }
+  
+    .navbar-links.open {
+      display: flex;
+    }
+  
+    .navbar-item,
+    .navbar-button {
+      margin: 10px 20px;
+      width: calc(100% - 40px);
+    }
+  
+    .navbar-toggle {
+      display: block;
+    }
+  }
+  
