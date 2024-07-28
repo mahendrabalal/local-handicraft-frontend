@@ -1,0 +1,48 @@
+/* Container styling for the Privacy Policy page */
+.privacy-policy {
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    text-align: left; /* Align text to the left for better readability */
+  }
+  
+  /* Styling for the main header */
+  .privacy-policy h1 {
+    font-size: 2.5em; /* Slightly larger for emphasis */
+    margin-bottom: 20px;
+    text-align: center; /* Center-align the main header */
+  }
+  
+  /* Styling for sub-headers */
+  .privacy-policy h2 {
+    font-size: 1.75em; /* Slightly larger for visibility */
+    margin-top: 30px; /* Increase margin to separate sections */
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    text-align: left; /* Align sub-headers to the left */
+  }
+  
+  /* Paragraph styling */
+  .privacy-policy p {
+    line-height: 1.6;
+    margin-bottom: 15px; /* Add space between paragraphs */
+  }
+  
+  /* List styling */
+  .privacy-policy ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 20px; /* Add padding for better alignment */
+  }
+  
+  /* Link styling */
+  .privacy-policy a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .privacy-policy a:hover {
+    text-decoration: underline;
+  }
+  

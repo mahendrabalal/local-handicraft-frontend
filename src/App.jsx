@@ -11,6 +11,8 @@ import UserProfile from './components/UserProfile';
 import Settings from './components/Setting';
 import IsPrivate from './components/IsPrivate';
 import ConnectionStatus from './components/ConnectionStatus';
+import Footer from './components/Footer';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 
 import './App.css'
@@ -52,16 +54,16 @@ function App() {
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/login" element = {<LoginPage />} />
       <Route path='/' element={<HomePage />} />
+      <Route path='privacy-policy' element={<PrivacyPolicy />} />
       <Route path="/dashboard" element={<IsPrivate><DashboardPage /></IsPrivate>}>
         <Route path="home" element={<DashboardHome />} />
         <Route path="profile" element={<UserProfile />} />
         <Route path="settings" element={<Settings />} />
       </Route>
-      
-
-      
     </Routes>
     </main>
+    <Footer />
+  
     <ConnectionStatus />
   </div>
   )
