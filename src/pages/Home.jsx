@@ -7,10 +7,6 @@ function HomePage() {
 
   return (
     <div className="home-page">
-      <header className="home-header">
-        <h1>Local Handicraft Shop</h1>
-        <p>Your one-stop solution for managing projects and tasks.</p>
-      </header>
 
       <main className="home-content">
         {isLoggedIn ? (

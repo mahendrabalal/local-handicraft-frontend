@@ -1,7 +1,7 @@
 /* Navbar styles */
 .navbar {
-    background-color: #ddd2d2;
-    color: #fff;
+    background-color: white;
+    color: #0d0a0a;
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -27,7 +27,8 @@
   }
   
   .navbar-logo {
-    height: 40px; /* Adjust height of the logo */
+    width: 150px;
+    height: 150px;
   }
   
   /* Navigation links container */
@@ -42,7 +43,7 @@
   
   .navbar-item {
     margin: 0 20px; /* Space between items */
-    color: #fff;
+    color: #0f0d0d;
     text-decoration: none;
     transition: color 0.3s ease;
   }

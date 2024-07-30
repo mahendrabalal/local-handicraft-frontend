@@ -14,8 +14,8 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-      <Link to="/" className="navbar-brand">
-          <img src="/src/assets/logo.png" alt="Logo" className="navbar-logo" />
+        <Link to="/" className="navbar-brand">
+          <img src="/src/assets/logo.png" alt="Logo" className="navbar-logo"/>
         </Link>
 
         <button className="navbar-toggle" onClick={handleMenuToggle} aria-label="Toggle navigation">
@@ -26,11 +26,19 @@ function Navbar() {
           <li>
             <Link to="/" className="navbar-item">Home</Link>
           </li>
-          
+          <li>
+            <Link to="/products" className="navbar-item">Products</Link>
+          </li>
           {isLoggedIn ? (
             <>
               <li>
-                <Link to="/projects" className="navbar-item">Project</Link>
+                <Link to="/home" className="navbar-item">Dashboard</Link>
+              </li>
+              <li>
+                <Link to="/profile" className="navbar-item">Profile</Link>
+              </li>
+              <li>
+                <Link to="/settings" className="navbar-item">Settings</Link>
               </li>
               <li>
                 <button onClick={logOutUser} className="navbar-button">Logout</button>
