@@ -15,10 +15,12 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
-          <img src="/src/assets/logo.png" alt="Logo" className="navbar-logo"/>
+          <img src="/src/assets/logo_transparent.png" alt="Logo" className="navbar-logo"/>
         </Link>
 
         <button className="navbar-toggle" onClick={handleMenuToggle} aria-label="Toggle navigation">
+          <span className="navbar-toggle-icon"></span>
+          <span className="navbar-toggle-icon"></span>
           <span className="navbar-toggle-icon"></span>
         </button>
 

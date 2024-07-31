@@ -1,136 +1,112 @@
-/* Navbar styles */
-.navbar {
-    background-color: white;
-    color: #0d0a0a;
+/* Basic reset for margins and paddings */
+body, ul, li, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .navbar {
+    background-color: #d7c9c9;
     padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    top: 0;
-    left: 0;
   }
   
   .navbar-container {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Space out the logo and links */
-    width: 100%;
-    max-width: 1200px; /* Optional: Limit max-width for better alignment */
-    margin: 0 auto;
+    justify-content: space-between;
   }
   
-  /* Navbar brand */
   .navbar-brand {
     display: flex;
     align-items: center;
-    text-decoration: none;
+    padding: 0;
+    margin: 0;
   }
   
   .navbar-logo {
-    width: 150px;
-    height: 150px;
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+    padding: 0px;
+    margin: 0px;
   }
   
-  /* Navigation links container */
-  .navbar-links {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center items horizontally */
-    list-style: none;
-    flex: 1; /* Make it take remaining space */
-    margin-left: 20px;
-  }
-  
-  .navbar-item {
-    margin: 0 20px; /* Space between items */
-    color: #0f0d0d;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar-item:hover {
-    color: #f0a500;
-  }
-  
-  .navbar-button {
-    margin: 0 20px; /* Space between items */
-    padding: 5px 10px;
-    background-color: #f00;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .navbar-button:hover {
-    background-color: #d00;
-  }
-  
-  .navbar-user {
-    margin: 0 20px; /* Space between items */
-    color: #fff;
-  }
-  
-  /* Mobile menu button */
   .navbar-toggle {
-    display: none;
+    display: none; /* Initially hidden, shown on smaller screens */
+    background: none;
+    border: none;
     cursor: pointer;
+    padding: 10px;
+    margin-left: auto; /* Position hamburger on the right */
   }
   
   .navbar-toggle-icon {
+    display: block;
     width: 25px;
-    height: 3px;
-    background-color: #fff;
-    position: relative;
-    transition: transform 0.3s ease;
+    height: 2px;
+    background-color: white;
+    margin: 5px 0;
   }
   
-  .navbar-toggle-icon::before,
-  .navbar-toggle-icon::after {
-    content: '';
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    position: absolute;
-    left: 0;
-    transition: transform 0.3s ease;
+  /* Styling for the navigation links */
+  .navbar-links {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Allows the navbar items to grow and fill the space */
+    justify-content: center; /* Centers the navbar items */
   }
   
-  .navbar-toggle-icon::before {
-    top: -8px;
+  .navbar-item {
+    color: rgb(23, 3, 3);
+    text-decoration: none;
+    margin: 0 15px; /* Spacing between items */
+    font-size: 20px; /* Font size */
   }
   
-  .navbar-toggle-icon::after {
-    bottom: -8px;
+  .navbar-item:hover {
+    color: #ddd;
   }
   
-  /* Mobile Styles */
-  @media (max-width: 350px) {
+  .navbar-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 15px;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 500px) {
     .navbar-links {
-      display: none;
+      display: none; /* Hide the links initially on small screens */
       flex-direction: column;
-      align-items: flex-start;
-      position: absolute;
-      top: 60px;
-      left: 0;
       width: 100%;
+      position: absolute;
+      top: 60px; /* Adjust according to the height of the navbar */
+      right: 0; /* Align dropdown to the right edge */
       background-color: #333;
-      padding: 10px;
-      z-index: 1000; /* Ensure dropdown menu is on top */
+      padding: 10px 0;
+      z-index: 10; /* Ensure dropdown is on top */
     }
   
     .navbar-links.open {
-      display: flex;
-    }
-  
-    .navbar-item,
-    .navbar-button {
-      margin: 10px 20px;
-      width: calc(100% - 40px);
+      display: flex; /* Show the links when menu is open */
     }
   
     .navbar-toggle {
-      display: block;
+      display: block; /* Show the hamburger menu on small screens */
+    }
+  
+    .navbar-item {
+      margin: 10px 0; /* Adjust spacing for mobile view */
+      text-align: center;
+    }
+  
+    .navbar-user {
+      margin: 10px 0; /* Adjust spacing for mobile view */
+      text-align: center;
+      color: white;
     }
   }
   
