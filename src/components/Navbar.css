@@ -11,13 +11,14 @@ body, ul, li, a {
     padding: 10px 20px;
     position: relative;
     z-index: 1000; /* Ensure it's above other content */
+    flex-wrap: wrap;
   }
   
   .navbar-container {
     display: flex;
     align-items: center;
     justify-content: space-between; /* Distribute space between items */
-    flex-wrap: wrap;
+    
   }
   
   .navbar-brand {
@@ -136,6 +137,13 @@ body, ul, li, a {
       display: flex; /* Ensure navbar items are visible */
       justify-content: center; /* Center items */
       flex-wrap: wrap;
+      font-size: 5px;
+    }
+    .navbar-item {
+      font-size: 15px;
+    }
+    .navbar-button {
+      font-size: 12px;
     }
   
     .sidebar {
@@ -145,6 +153,9 @@ body, ul, li, a {
     .navbar-user {
       display: flex; /* Hide profile icon on tablets */
       
+    }
+    .navbar-user-icon {
+      font-size: 15px;
     }
   }
   
