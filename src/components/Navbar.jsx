@@ -28,17 +28,27 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-brand">
-          <img src="/src/assets/logo_transparent.png" alt="Logo" className="navbar-logo"/>
-        </Link>
-
-        <button className="navbar-toggle" onClick={handleMenuToggle} aria-label="Toggle navigation">
+        {/* Hamburger Toggle Button */}
+        <button 
+          className="navbar-toggle" 
+          onClick={handleMenuToggle} 
+          aria-label="Toggle navigation"
+          aria-expanded={isMenuOpen}
+        >
           <span className="navbar-toggle-icon"></span>
           <span className="navbar-toggle-icon"></span>
           <span className="navbar-toggle-icon"></span>
         </button>
 
-        <ul className="navbar-links">
+        {/* Logo */}
+        <Link to="/" className="navbar-brand">
+          <img src="/src/assets/logo.png" alt="Logo" className="navbar-logo"/>
+        </Link>
+
+        
+
+        {/* Navigation Links */}
+        <ul className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
           <li><Link to="/" className="navbar-item">Home</Link></li>
           <li><Link to="/products" className="navbar-item">Products</Link></li>
           {isLoggedIn ? (
@@ -47,11 +57,6 @@ function Navbar() {
               <li><Link to="/profile" className="navbar-item">Profile</Link></li>
               <li><Link to="/settings" className="navbar-item">Settings</Link></li>
               <li><button onClick={logOutUser} className="navbar-button">Logout</button></li>
-              <li className="navbar-user">
-                <Link to="/profile">
-                  <img src={user?.profileImageUrl || '/path/to/default-icon.jpg'} alt="Profile Icon" className="navbar-user-icon" />
-                </Link>
-              </li>
             </>
           ) : (
             <>
@@ -61,6 +66,16 @@ function Navbar() {
           )}
         </ul>
 
+        {/* User Profile */}
+        <div className="navbar-user">
+          {isLoggedIn && (
+            <Link to="/profile">
+              <img src={user?.profileImageUrl || '/src/assets/account-profile-user-icon--icon-search-engine-10.png'} alt="Profile Icon" className="navbar-user-icon" />
+            </Link>
+          )}
+        </div>
+
+        {/* Sidebar */}
         <div className={`sidebar ${isMenuOpen ? 'open' : ''}`} ref={sidebarRef}>
           <ul className="sidebar-links">
             <li><Link to="/" className="navbar-item">Home</Link></li>
@@ -71,11 +86,6 @@ function Navbar() {
                 <li><Link to="/profile" className="navbar-item">Profile</Link></li>
                 <li><Link to="/settings" className="navbar-item">Settings</Link></li>
                 <li><button onClick={logOutUser} className="navbar-button">Logout</button></li>
-                <li className="navbar-user">
-                  <Link to="/profile">
-                    <img src={user?.profileImageUrl || '/path/to/default-icon.jpg'} alt="Profile Icon" className="navbar-user-icon" />
-                  </Link>
-                </li>
               </>
             ) : (
               <>
