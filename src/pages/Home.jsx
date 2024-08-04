@@ -20,7 +20,7 @@ function HomePage() {
   return (
     <div className="home-page">
       <div className="banner-container">
-        <img src="/src/assets/homePageBanner.jpg" alt="Banner" className="banner-image" />
+        <img src="/src/assets/home- banner.jpg" alt="Banner" className="banner-image" />
         <div className="banner-text">
           <h1>Make Money by Selling Your Unused Items</h1>
           <br></br>
