@@ -1,39 +1,40 @@
-import React, {useContext} from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import "./Home.css"; // Import the CSS file
 
 function HomePage() {
-  const { isLoggedIn, user } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/projects"); // Redirect logged-in users to the /projects page
+    }
+  }, [isLoggedIn, navigate]);
+
+  if (isLoggedIn) {
+    return null; // Optionally return null or a loading spinner while redirecting
+  }
 
   return (
     <div className="home-page">
-
-      <main className="home-content">
-        {isLoggedIn ? (
-          <div>
-            <h2>Hello, {user?.name}!</h2>
-            <p>We are glad to have you back.</p>
-            <Link to="/projects">
-              <button>Go to Projects</button>
-            </Link>
-          </div>
-        ) : (
-          <div>
-            <h2>Get Started</h2>
-            <p>Sign up or log in to start using the application.</p>
+      <div className="banner-container">
+        <img src="/src/assets/homePageBanner.jpg" alt="Banner" className="banner-image" />
+        <div className="banner-text">
+          <h1>Make Money by Selling Your Unused Items</h1>
+          <br></br>
+          <p>Sign up to start selling or log in if you already have an account.</p>
+          <div className="home-buttons">
             <Link to="/signup">
-              <button>Sign Up</button>
+              <button className="home-button">Sign Up</button>
             </Link>
             <Link to="/login">
-              <button>Login</button>
+              <button className="home-button">Login</button>
             </Link>
           </div>
-        )}
-      </main>
-
-      <footer className="home-footer">
-        <p>&copy; 2024 Our Application. All rights reserved.</p>
-      </footer>
+        </div>
+      </div>
     </div>
   );
 }

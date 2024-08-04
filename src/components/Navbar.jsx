@@ -49,7 +49,6 @@ function Navbar() {
 
         {/* Navigation Links */}
         <ul className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
-          <li><Link to="/" className="navbar-item">Home</Link></li>
           <li><Link to="/products" className="navbar-item">Products</Link></li>
           {isLoggedIn ? (
             <>
@@ -60,6 +59,7 @@ function Navbar() {
             </>
           ) : (
             <>
+            <li><Link to="/" className="navbar-item">Home</Link></li>
               <li><Link to="/signup" className="navbar-item">Sign Up</Link></li>
               <li><Link to="/login" className="navbar-item">Login</Link></li>
             </>

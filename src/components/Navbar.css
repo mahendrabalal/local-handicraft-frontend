@@ -43,11 +43,13 @@ body, ul, li, a {
   align-items: center;
   flex-grow: 1; /* Allow the logo to take available space */
   justify-content: center; /* Center the logo */
+  padding-top: 0%;
 }
 
 .navbar-logo {
   width: 150px; /* Adjust size as needed */
   height: auto;
+  padding-top: 0%;
 }
 
 /* User Profile Icon */
