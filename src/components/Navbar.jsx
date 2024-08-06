@@ -82,7 +82,7 @@ function Navbar() {
             <li><Link to="/products" className="navbar-item">Products</Link></li>
             {isLoggedIn ? (
               <>
-                <li><Link to="/home" className="navbar-item">Dashboard</Link></li>
+                <li><Link to="/" className="navbar-item">Dashboard</Link></li>
                 <li><Link to="/profile" className="navbar-item">Profile</Link></li>
                 <li><Link to="/settings" className="navbar-item">Settings</Link></li>
                 <li><button onClick={logOutUser} className="navbar-button">Logout</button></li>

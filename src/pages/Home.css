@@ -1,74 +1,107 @@
-/* Dashboard.css */
-
-.dashboard {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  background-color: #f4f4f9;
-  min-height: 100vh;
-}
-
-.dashboard-header {
+/* General Styles */
+.home-page {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-}
-
-.dashboard-header h1 {
-  margin: 0;
-  color: #333;
-}
-
-.logout-button {
-  background-color: #f44;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-.dashboard-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-}
-
-.sell-section {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  max-width: 500px;
-  width: 100%;
+  align-items: center;
   text-align: center;
+  
 }
 
-.sell-section h2 {
-  margin-top: 0;
-  color: #333;
+.banner-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%; /* Adjust to fit your design */
+  overflow: hidden; /* Ensure no content spills out */
 }
 
-.sell-section p {
-  color: #666;
+.banner-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensure the image covers the container without distortion */
 }
 
-.post-item-button {
-  background-color: #4CAF50;
-  color: #fff;
+.banner-text {
+  position: absolute;
+  top: 20%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  color: #2f3644; /* White text for contrast */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for readability */
+  text-align: center;
+  padding: 20px;
+  width: 90%;
+  max-width: 800px; /* Limit the text width */
+}
+
+.banner-text h1 {
+  font-size: 2.5rem; /* Responsive font size */
+  margin: 0;
+}
+
+.banner-text p {
+  font-size: 1.125rem;
+  margin: 10px 0;
+}
+
+/* Buttons */
+.home-buttons {
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  gap: 10px; /* Space between buttons */
+  margin-top: 20px;
+}
+
+.home-button {
+  background-color: #1a324b;
+  color: white;
   border: none;
-  padding: 15px 30px;
+  padding: 12px 24px;
   cursor: pointer;
   border-radius: 5px;
-  font-size: 18px;
-  margin-top: 15px;
-  transition: background-color 0.3s;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.post-item-button:hover {
-  background-color: #45a049;
+.home-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.home-button:focus {
+  outline: none;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .banner-text h1 {
+    font-size: 2rem;
+  }
+
+  .banner-text {
+    top: 30%;
+  }
+  .banner-text p {
+    font-size: 1rem;
+  }
+
+  .home-button {
+    padding: 10px 20px;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .banner-text p {
+    font-size: 0.875rem;
+  }
+
+  .home-button {
+    padding: 8px 16px;
+    font-size: 0.75rem;
+  }
 }

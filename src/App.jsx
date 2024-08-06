@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
-import HomePage from './pages/Home';
 import IsAnon from './components/IsAnon';
+import HomePage from './pages/Home';
 import DashboardPage from './pages/DashboardPage';
 import DashboardHome from './components/DashboardHome';
 import UserProfile from './components/UserProfile';
@@ -51,10 +51,10 @@ function App() {
     <div className="App">
     <Navbar />
     <main className='main-content'>
-    <Routes>      
+    <Routes>     
+      <Route path='/' element={<HomePage />} /> 
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/login" element = {<LoginPage />} />
-      <Route path='/' element={<HomePage />} />
       <Route path='/privacy-policy' element={<PrivacyPolicy />} />
       <Route path="/dashboard" element={<IsPrivate><DashboardPage /></IsPrivate>}>
         <Route path="home" element={<DashboardHome />} />

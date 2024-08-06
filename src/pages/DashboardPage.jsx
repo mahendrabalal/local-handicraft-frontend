@@ -11,17 +11,17 @@ function Dashboard({ username }) {
     description: '',
     price: '',
     imageUrl: '',
-    category: 'Clothing', // Default category
+    category: 'Clothing', 
     stock: ''
   });
 
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
 
   // Fetch the product list on component mount
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/products'); // Adjust the URL as needed
+        const response = await axios.get('http://localhost:5005/api/products'); 
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -44,7 +44,7 @@ function Dashboard({ username }) {
     console.log('Submitting form with data:', formData); // Debugging log
 
     try {
-      const response = await axios.post('http://localhost:5000/api/products', formData); // Adjust the URL as needed
+      const response = await axios.post('http://localhost:5005/api/products', formData); // Adjust the URL as needed
       console.log('Product added:', response.data); // Debugging log
 
       // Clear the form
