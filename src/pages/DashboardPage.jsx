@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import './Dashboard.css'; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom'; 
+import './Dashboard.css'; 
 
 function Dashboard({ username }) {
   const [showForm, setShowForm] = useState(false);
@@ -56,6 +56,12 @@ function Dashboard({ username }) {
         category: 'Clothing', // Reset to default category
         stock: ''
       });
+
+      // Refresh the product list
+      const updatedResponse = await axios.get('http://localhost:5005/api/products', {
+        params: { username }
+      });
+      setProducts(updatedResponse.data);
 
       // Redirect to the products page
       navigate('/products'); // Navigate to products page
