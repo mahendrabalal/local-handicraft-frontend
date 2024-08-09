@@ -2,71 +2,75 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import './LoginPage.css'; // Import the CSS file
 
 const API_URL = "http://localhost:5005";
 
-
-function LoginPage(props) {
+function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(undefined);
     
     const navigate = useNavigate();
-
-    const {storeToken, authenticateUser} = useContext(AuthContext);
+    const { storeToken, authenticateUser } = useContext(AuthContext);
 
     const handleEmail = (e) => setEmail(e.target.value);
-    const handlePassword= (e) => setPassword(e.target.value);
+    const handlePassword = (e) => setPassword(e.target.value);
 
-    const handleLoginSubmit = (e) => {
+    const handleLoginSubmit = async (e) => {
         e.preventDefault();
-        const requestBody = { email, password};
-
-        axios.post(`${API_URL}/auth/login`, requestBody)
-        .then((response) => {
-        // Request to the server's endpoint `/auth/login` returns a response
-        // with the JWT string ->  response.data.authToken
-        console.log('JWT token', response.data.authToken);
-        //save the token
-        storeToken(response.data.authToken);
-        //verify the token by sending a request
-        //to the server's JWT validation endpoint
-        authenticateUser();
-        navigate('/');
-        })
-        .catch((error) => {
-            const errorDescription = error.response.data.message;
-            setErrorMessage(errorDescription);
-        })
+        try {
+            const response = await axios.post(`${API_URL}/auth/login`, {
+                email,
+                password
+            });
+            console.log('Token received:', response.data.authToken); // Verify the token
+            storeToken(response.data.authToken);
+            authenticateUser();
+            navigate('/');
+        } catch (error) {
+            setErrorMessage(error.response.data.message);
+        }
     };
 
     return (
         <div className="login-page">
-            <h1>Login</h1>
-            <form onSubmit={handleLoginSubmit}>
-            <label>Email:</label>
-        <input 
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmail}
-        />
- 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-        <button type="submit">Login</button> 
-            </form>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <p>Don&apos;t have an account yet?</p>
-            <Link to={"/signup"}>Sign Up</Link>
+            <div className="login-info">
+                <h2>Welcome Back!</h2>
+                <p>Login to access your dashboard and manage your account.</p>
+            </div>
+            <div className="login-form">
+                <h1 className="login-title">Login</h1>
+                <form onSubmit={handleLoginSubmit}>
+                    <div className="input-group">
+                        <label htmlFor="email">Email:</label>
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={handleEmail}
+                            required
+                        />
+                    </div>
+                    <div className="input-group">
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={handlePassword}
+                            required
+                        />
+                    </div>
+                    <button type="submit" className="login-button">Login</button>
+                </form>
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
+                <p className="signup-prompt">Don’t have an account yet? <Link to="/signup" className="signup-link">Sign Up</Link></p>
+            </div>
         </div>
-    )
-    
+    );
 }
 
 export default LoginPage;

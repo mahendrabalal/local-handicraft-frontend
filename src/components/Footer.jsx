@@ -20,10 +20,10 @@ const Footer = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    //window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      //window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 

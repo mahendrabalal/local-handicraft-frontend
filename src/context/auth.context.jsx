@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import axios from "axios";
 const API_URL = "http://localhost:5005";
 const AuthContext = React.createContext();
@@ -7,44 +7,36 @@ function AuthProviderWrapper(props) {
     const [isLoggedIn, setIsLoggedIn] =useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState(null);
+   
 
     //function for handling authentication status
     const storeToken= (token) => {
     localStorage.setItem('authToken', token);
     }
 
-    const authenticateUser = () => {
-
-        //get stored token
-        const storedToken = localStorage.getItem('authToken');
-
-        //if the token exists in the localStorage
-        if(storedToken) {
-            axios.get(
-                `${API_URL}/auth/verify`,
-                {headers: {Authorization: `Bearer ${storedToken}`} }
-            )
-            .then((response) => {
-                const user = response.data;
-
-                //update state variables
+    const authenticateUser = async () => {
+        try {
+            const storedToken = localStorage.getItem('authToken');
+            console.log('Retrieved token:', storedToken); // Verify token retrieval
+            if (storedToken) {
+                const response = await axios.get(`${API_URL}/auth/verify`, {
+                    headers: { Authorization: `Bearer ${storedToken}` }
+                });
+                setUser(response.data);
                 setIsLoggedIn(true);
-                setIsLoading(false);
-                setUser(user);
-            })
-            .catch((error) => {
-            // If the server sends an error response (invalid token) 
-            // Update state variables  
+            } else {
+                setIsLoggedIn(false);
+                setUser(null);
+            }
+        } catch (error) {
+            console.error('Authentication error:', error);
             setIsLoggedIn(false);
-            setIsLoading(false);
-            setUser(null);        
-            });
-        } else {
-            setIsLoggedIn(false);
-            setIsLoading(false);
             setUser(null);
+        } finally {
+            setIsLoading(false);
         }
-    }
+    };
+    
 
     const removeToken =() => {
         //Upon logout remove the token from the localStorage

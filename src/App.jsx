@@ -14,6 +14,7 @@ import ConnectionStatus from './components/ConnectionStatus';
 import Footer from './components/Footer';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ProductList from './components/ProductList';
+import NotFoundPage from './pages/NotFoundPage';
 
 
 import './App.css'
@@ -62,6 +63,7 @@ function App() {
         <Route path="settings" element={<Settings />} />
       </Route>
       <Route path='/products' element={<ProductList />} />
+      <Route path='*' element={<NotFoundPage />} />
     </Routes>
     </main>
     <ConnectionStatus />
