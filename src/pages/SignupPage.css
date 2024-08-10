@@ -91,7 +91,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   /* background: url('/public/assets/signUpBanner.jpg') no-repeat center center;*/
+   /* background: url('/assets/signUpBanner.jpg') no-repeat center center;*/
     background-size: cover;
     color:#09338e;
     text-align: center;

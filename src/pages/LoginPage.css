@@ -8,7 +8,7 @@
 
 .login-info {
     flex: 1;
-    background: url('/public/assets/sign-in-side.jpg') no-repeat center center;
+    background: url('/assets/sign-in-side.jpg') no-repeat center center;
     background-size: cover;
     color: rgb(129, 110, 110); /* Ensure text is visible on the image */
     padding: 30px;

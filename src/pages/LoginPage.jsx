@@ -24,12 +24,14 @@ function LoginPage() {
                 email,
                 password
             });
-            console.log('Token received:', response.data.authToken); // Verify the token
-            storeToken(response.data.authToken);
-            authenticateUser();
-            navigate('/');
+            const token = response.data.authToken; // Token received from server
+            console.log('Token received:', token); // Verify the token
+            storeToken(token); // Store the token in local storage
+            console.log('Token stored in localStorage:', localStorage.getItem('token')); // Verify storage
+            authenticateUser(); // Update context state
+            navigate('/'); // Redirect to home page
         } catch (error) {
-            setErrorMessage(error.response.data.message);
+            setErrorMessage(error.response?.data?.message || 'An error occurred');
         }
     };
 

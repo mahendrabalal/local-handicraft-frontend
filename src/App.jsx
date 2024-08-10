@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ProductList from './components/ProductList';
 import NotFoundPage from './pages/NotFoundPage';
+import ProfilePage from './pages/ProfilePage';
 
 
 import './App.css'
@@ -58,15 +59,13 @@ function App() {
       <Route path="/login" element = {<LoginPage />} />
       <Route path='/privacy-policy' element={<PrivacyPolicy />} />
       <Route path="/dashboard" element={<IsPrivate><DashboardPage /></IsPrivate>}>
-        <Route path="home" element={<DashboardHome />} />
-        <Route path="profile" element={<UserProfile />} />
         <Route path="settings" element={<Settings />} />
       </Route>
+      <Route path="/profile" element={<IsPrivate><ProfilePage /></IsPrivate>} />
       <Route path='/products' element={<ProductList />} />
       <Route path='*' element={<NotFoundPage />} />
     </Routes>
     </main>
-    <ConnectionStatus />
     <Footer />
   
    
