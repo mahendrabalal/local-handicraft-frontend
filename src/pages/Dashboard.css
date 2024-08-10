@@ -1,64 +1,110 @@
 .dashboard {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  background-color: #f5f5f5;
+  height: 100vh; /* Full viewport height */
 }
 
 .dashboard-header {
   text-align: center;
-  margin-bottom: 20px;
+  border-radius: 10px;
+  margin: 5px;
+  background-color: #f9f9f9;
+  box-shadow:#ddd;
+  
 }
 
 .dashboard-content {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.form-section, .product-list-section {
   flex: 1;
-  padding: 20px;
-  border-radius: 8px;
+  overflow: auto; /* Ensure content is scrollable */
+}
+
+.dashboard-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.product-form {
+  flex: 1;
+  padding: 1rem;
+  border-right: 1px solid #ddd;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.product-item.highlight {
-  border: 2px solid #007bff;
-  background-color: #e6f7ff;
-}
-
-
-.form-section {
-  max-width: 40%;
 }
 
 .product-list-section {
-  max-width: 55%;
+  flex: 2;
+  padding: 1rem;
+  overflow-y: auto;
 }
 
-.post-item-button, .edit-button, .delete-button {
-  margin-top: 10px;
-  padding: 10px 15px;
-  border: none;
+.product-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.product-item {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  cursor: pointer;
+  background-color: #f9f9f9;
 }
 
-.post-item-button {
+.product-item.highlight {
+  border-color: #007bff;
+}
+
+.product-image {
+  max-width: 100px;
+  height: auto;
+}
+
+.error-message {
+  color: red;
+}
+
+button {
+  margin: 0.5rem 0;
+}
+
+.product-info p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.product-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.edit-button, .delete-button {
   background-color: #007bff;
   color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-.edit-button {
-  background-color: #28a745;
-  color: #fff;
+.edit-button:hover {
+  background-color: #0056b3;
 }
 
 .delete-button {
   background-color: #dc3545;
-  color: #fff;
 }
 
-.error-message
+.delete-button:hover {
+  background-color: #c82333;
+}
