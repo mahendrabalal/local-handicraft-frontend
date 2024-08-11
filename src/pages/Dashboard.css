@@ -12,6 +12,49 @@
   box-shadow:#ddd;
   
 }
+/* Header styling */
+.dashboard-header {
+  background: linear-gradient(135deg, #2b3039, #24424a); /* Gradient background */
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Ensure the pseudo-elements stay within bounds */
+}
+
+/* Optional decorative pseudo-elements */
+.dashboard-header::before,
+.dashboard-header::after {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent overlay */
+  border-radius: 50%;
+  top: -50%;
+  left: -25%;
+  z-index: 0;
+  transform: rotate(-30deg);
+}
+
+.dashboard-header::after {
+  background: rgba(255, 255, 255, 0.2); /* Slightly different shade for a layered effect */
+  top: -20%;
+  left: -10%;
+  transform: rotate(30deg);
+}
+
+/* Ensure header content is above pseudo-elements */
+.dashboard-header h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1; /* Ensure text is above the pseudo-elements */
+  line-height: 1.3;
+}
 
 .dashboard-content {
   display: flex;
