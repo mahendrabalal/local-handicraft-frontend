@@ -1,198 +1,120 @@
-# React + Vite
-# Backlog Quest
+# Local Handicraft Business 🌟
 
-<br>
+## 📝 Description
 
-## Description
+Welcome to **Local Handicraft site** – an app designed to help local artisans showcase, manage, and sell their handcrafted products. Our platform is dedicated to promoting local craftsmanship and connecting artisans with customers.
 
-This is an app that organizes and manages backlog for different types of media. Mainly from streaming and other monthly services.
+---
 
-## User Stories
+## 🚀 User Stories
 
--  **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault
--  **Signup:** As an anon I can sign up in the platform so that I can start creating and managing my backlog
--  **Login:** As a user I can login to the platform so that I can start creating and managing my backlog
--  **Logout:** As a user I can logout from the platform so no one else can modify my information
--  **Toogle media** As a user I can toogle between different types of media
--  **Add elements** As a user I can add elements to my backlog
--  **Delete elements** As a user I can delete elements from my backlog
--  **Mark elements** As a user I can mark elements in my backlog as done
--  **Random element** As a user I can get a random element from my backlog
--  **Check profile** As a user I can check my profile and stats
+1. **404 Page:**  
+   As an anonymous user, if I attempt to access a non-existent page, I will see a 404 error page to let me know it’s my fault.
 
-## Backlog
+2. **Signup:**  
+   As an anonymous user, I can sign up to start listing and managing my handcrafted products.
 
-- Friends list
-- Recommendations from friends
-- Books media
-- Comics media
+3. **Login:**  
+   As a user, I can log in to access my store and manage my inventory.
 
-<br>
+4. **Logout:**  
+   As a user, I can log out to ensure my account and data are secure.
 
+5. **Toggle Categories:**  
+   As a user, I can switch between different product categories (e.g., pottery, textiles, jewelry).
 
-# Client / Frontend
+6. **Add Products:**  
+   As a user, I can add new handcrafted items to my store.
 
-## React Router Routes (React App)
-| Path                      | Component                      | Permissions | Behavior                                                     |
-| ------------------------- | --------------------           | ----------- | ------------------------------------------------------------ |
-| `/`                       | SplashPage                     | public `<Route>`            | Home page                                        |
-| `/signup`                 | SignupPage                     | anon only  `<AnonRoute>`    | Signup form, link to login, navigate to homepage after signup |
-| `/login`                  | LoginPage                      | anon only `<AnonRoute>`     | Login form, link to signup, navigate to homepage after login  |
-| `/logout`                 | n/a                            | user only `<PrivateRoute>`  | Navigate to homepage after logout, expire session             |
-| `/backlog/series`         | NavBar, ElementList, FooterBar | user only `<PrivateRoute>`  | Shows all tv series on backlog                                |
-| `/backlog/films`          | NavBar, ElementList, FooterBar | user only `<PrivateRoute>`  | Shows all films on backlog                                    |
-| `/backlog/games`          | NavBar, ElementList, FooterBar | user only `<PrivateRoute>`  | Shows all games on backlog                                    |
-| `/search/series`          | SearchForm, SearchResults      | user only  `<PrivateRoute>` | Search a tv series to be added                                |
-| `/search/films`           | SearchForm, SearchResults      | user only `<PrivateRoute>`  | Search a film to be added                                     |
-| `/search/games`           | SearchForm, SearchResults      | user only `<PrivateRoute>`  | Search a game to be added                                     |
-| `/add/:id`                | ElementInfo                    | user only `<PrivateRoute>`  | Add an element to the backlog                                 |
-| `/profile`                | Profile, Stats                 | user only  `<PrivateRoute>` | Check profile with stat information                           |
-| `/done/series`            | Done list for Series           | user only  `<PrivateRoute>` | Shows all tv series finished                                  |
-| `/done/films`             | Done list for films            | user only `<PrivateRoute>`  | Shows all films finished                                      |
-| `/done/games`             | Done list for games            | user only `<PrivateRoute>`  | Shows all videogames finished                                 |
-          
+7. **Delete Products:**  
+   As a user, I can remove items from my store.
 
-## Components
+8. **Mark as Sold:**  
+   As a user, I can mark items as sold to keep track of inventory.
 
-- LoginPage
+9. **Random Product:**  
+   As a user, I can discover a random product from the store.
 
-- SignupPage
+10. **Check Profile:**  
+    As a user, I can view my profile and see my store statistics.
 
-- NavBar
+---
 
-- FooterBar
+## 📚 Features
 
-- BackBar
+- **Product Categories:** Organize products into categories like pottery, textiles, jewelry, etc.
+- **Product Management:** Add, update, or delete products easily.
+- **Sales Tracking:** Monitor and manage product sales.
+- **Random Discovery:** Let users discover new products at random.
 
-- ElementList
+---
 
-- SearchForm
+## 🖥️ Client / Frontend
 
-- SearchResults
+### 🌐 React Router Routes
 
-- ElementInfo
+| **Path**                  | **Component**               | **Permissions**  | **Behavior**                                             |
+|---------------------------|-----------------------------|------------------|----------------------------------------------------------|
+| `/`                       | HomePage                    | Public           | Homepage with featured products                         |
+| `/signup`                 | SignupPage                  | Anon only        | Signup form for new users                               |
+| `/login`                  | LoginPage                   | Anon only        | Login form for returning users                          |
+| `/logout`                 | N/A                         | User only        | Logout and redirect to homepage                         |
+| `/products`               | ProductList, NavBar, Footer | User only        | View all products in the store                          |
+| `/product/:id`            | ProductDetail               | Public           | View details of a specific product                      |
+| `/add-product`            | AddProductForm              | User only        | Form to add a new product to the store                  |
+| `/edit-product/:id`       | EditProductForm             | User only        | Form to edit an existing product                        |
+| `/profile`                | ProfilePage, Stats          | User only        | View user profile and store statistics                  |
+| `/sold-products`          | SoldProductList             | User only        | View products that have been marked as sold             |
 
-- Stats
+---
 
+## 🧩 Components
 
+- **HomePage** - Displays featured products and categories
+- **SignupPage** - User registration interface
+- **LoginPage** - User login interface
+- **NavBar** - Navigation bar for easy access to different sections
+- **Footer** - Footer with additional links and information
+- **ProductList** - List of products in the store
+- **ProductDetail** - Detailed view of a specific product
+- **AddProductForm** - Form for adding new products
+- **EditProductForm** - Form for editing existing products
+- **ProfilePage** - User profile and stats
 
-  
+---
 
- 
+## 🔌 Services
 
-## Services
+- **Auth Service**
+  - `auth.login(user)` – Log in a user
+  - `auth.signup(user)` – Register a new user
+  - `auth.logout()` – Log out the current user
+  - `auth.me()` – Retrieve the current user’s profile
 
-- Auth Service
-  - auth.login(user)
-  - auth.signup(user)
-  - auth.logout()
-  - auth.me()
+- **Product Service**
+  - `product.list(category)` – Get a list of products by category
+  - `product.detail(id)` – Get details of a specific product
+  - `product.add(data)` – Add a new product to the store
+  - `product.delete(id)` – Remove a product from the store
+  - `product.update(id, data)` – Update details of an existing product
 
-- Backlog Service
-  - backlog.filter(type, status) // for different types of media and if they are done or not
-  - backlog.detail(id)
-  - backlog.add(id)
-  - backlog.delete(id)
-  - backlog.update(id)
-  
-- External API
-  - API for games
-  - API for series
-  - API for films
+- **External API**
+  - API for local crafts
+  - API for payment processing
 
+---
 
-<br>
+## 🏗️ Server / Backend
 
+### 📦 Models
 
-# Server / Backend
-
-
-## Models
-
-User model
+**User Model**
 
 ```javascript
 {
   username: {type: String, required: true, unique: true},
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true},
-  platform: [platforms]
-  elements: [{type: Schema.Types.ObjectId,ref:'Media'}]
+  storeName: {type: String, required: true},
+  products: [{type: Schema.Types.ObjectId, ref: 'Product'}]
 }
-```
-
-
-
-Media model
-
-```javascript
- {
-   title: {type: String, required: true},
-   type: {type: String, required: true},
-   done: {type: Boolean, required: true},
-   platform: {type: String, required: true},
-   image: {type: String, required: true}
-   description: {type, String, required: true}
-   user: {type: Schema.Types.ObjectId,ref:'User'},
- }
-```
-
-
-<br>
-
-
-## API Endpoints (backend routes)
-
-| HTTP Method | URL                         | Request Body                 | Success status | Error Status | Description                                                  |
-| ----------- | --------------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------ |
-| GET         | `/auth/profile    `           | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
-| POST        | `/auth/signup`                | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
-| POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session    |
-| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                            |
-| POST        | `/search/add`                 | {platform, title, type, id}  |                | 400          | Add new backlog element and add to user                                               |
-| GET         | `/backlog/series`             |                              |                | 400          | Show series elements                                           |
-| GET         | `/backlog/films`              |                              |                |              | Show film elements                                           |
-| GET         | `/backlog/games`              |                              |                |              | Show games elements                                          |
-| GET         | `/media/:id`                        |                              | 201            | 400          | Show specific element                                        |
-| PUT         | `/media/:id`                 |                              | 200            | 400          | edit element                                                 |
-| DELETE      | `/media/:id`                 |                              | 201            | 400          | delete element                                               |
-| GET         | `/done/series`                |                              |                | 400          | Show series elements                                         |
-| GET         | `/done/films`                 |                              |                |              | Show film elements                                           |
-| GET         | `/done/games`                 |                              |                |              | Show games elements                                          |
-
-
-
-<br>
-
-
-## Links
-
-### Trello/Kanban
-
-[Link to your trello board](https://trello.com/b/iloDccrZ/backlog-quest) 
-or picture of your physical board
-
-### Git
-
-The url to your repository and to your deployed project
-
-[Client repository Link](https://github.com/jorgeberrizbeitia/backlog-quest)
-
-[Server repository Link](https://github.com/jorgeberrizbeitia/backlog-quest-server)
-
-[Deployed App Link](https://backlog-quest.herokuapp.com/login)
-
-### Slides
-
-The url to your presentation slides
-
-[Slides Link](https://docs.google.com/presentation/d/1zndKZ8DC-_i391alptPKsAKanCSXTrLVL39L3xtEjz8/edit?usp=sharing)
-
-
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

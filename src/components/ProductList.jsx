@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { fetchProducts } from '../services/productServices';
 import { AuthContext } from '../context/auth.context'; // Import AuthContext if using for authentication
+import { Link } from 'react-router-dom';
 import './ProductList.css'; // Import the CSS file
 
 const ProductList = () => {
@@ -38,12 +39,15 @@ const ProductList = () => {
                 {products.length > 0 ? (
                     products.map((product) => (
                         <li key={product._id} className="product-item">
-                            <img src={product.imageUrl} alt={product.name} className="product-image" />
-                            <div className="product-details">
-                                <h2>{product.name}</h2>
-                                <p>{product.description}</p>
-                                <p>Price: ${product.price}</p>
-                            </div>
+                            <Link to={`/products/${product._id}`} className="product-link">
+                                <img src={product.imageUrl} alt={product.name} className="product-image" />
+                                </Link>
+                                <div className="product-details">
+                                    <h2>{product.name}</h2>
+                                    <p>{product.description}</p>
+                                    <p>Price: ${product.price}</p>
+                                </div>
+                            
                         </li>
                     ))
                 ) : (

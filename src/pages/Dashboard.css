@@ -7,22 +7,23 @@
 .dashboard-header {
   text-align: center;
   border-radius: 10px;
-  margin: 5px;
+  margin: 0px;
   background-color: #f9f9f9;
   box-shadow:#ddd;
   
 }
 /* Header styling */
-.dashboard-header {
-  background: linear-gradient(135deg, #2b3039, #24424a); /* Gradient background */
+/* .dashboard-header {
+  background: linear-gradient(135deg, #2b3039, #24424a); 
   color: #fff;
   padding: 20px;
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   text-align: center;
   position: relative;
-  overflow: hidden; /* Ensure the pseudo-elements stay within bounds */
+  overflow: hidden; stay within bounds */
 }
+
 
 /* Optional decorative pseudo-elements */
 .dashboard-header::before,
@@ -59,7 +60,8 @@
 .dashboard-content {
   display: flex;
   flex: 1;
-  overflow: auto; /* Ensure content is scrollable */
+  overflow: auto;
+  flex-direction: row;
 }
 
 .dashboard-container {
@@ -150,4 +152,14 @@ button {
 
 .delete-button:hover {
   background-color: #c82333;
+  
+}/* Media query for small screens */
+@media (max-width: 768px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+
+  .product-list-section {
+    margin-top: 1rem; /* Space above the product list */
+  }
 }

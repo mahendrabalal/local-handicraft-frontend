@@ -1,0 +1,58 @@
+.product-details-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    position: relative; /* Set position relative to position the button at the bottom */
+}
+
+.product-details-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 60px; /* Ensure space for the button */
+}
+
+.product-detail-image {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-detail-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-detail-info h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.product-detail-info p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
+
+.product-detail-info strong {
+    font-weight: bold;
+}
+
+.go-back-button {
+    position: absolute;
+    bottom: 20px; /* Distance from the bottom */
+    left: 20px; /* Distance from the left */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.go-back-button:hover {
+    background-color: #0056b3;
+}
