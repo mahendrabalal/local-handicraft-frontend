@@ -45,21 +45,17 @@ function Navbar() {
           <img src="/src/assets/logo.png" alt="Logo" className="navbar-logo"/>
         </Link>
 
-        
-
         {/* Navigation Links */}
         <ul className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
-          <li><Link to="/products" className="navbar-item">Products</Link></li>
           {isLoggedIn ? (
             <>
-            
               <li><Link to="/profile" className="navbar-item">Profile</Link></li>
               <li><Link to="/settings" className="navbar-item">Settings</Link></li>
               <li><button onClick={logOutUser} className="navbar-button">Logout</button></li>
             </>
           ) : (
             <>
-            <li><Link to="/" className="navbar-item">Home</Link></li>
+              <li><Link to="/products" className="navbar-item">Products</Link></li>
               <li><Link to="/signup" className="navbar-item">Sign Up</Link></li>
               <li><Link to="/login" className="navbar-item">Login</Link></li>
             </>
@@ -79,7 +75,6 @@ function Navbar() {
         <div className={`sidebar ${isMenuOpen ? 'open' : ''}`} ref={sidebarRef}>
           <ul className="sidebar-links">
             <li><Link to="/" className="navbar-item">Home</Link></li>
-            <li><Link to="/products" className="navbar-item">Products</Link></li>
             {isLoggedIn ? (
               <>
                 <li><Link to="/" className="navbar-item">Dashboard</Link></li>
@@ -88,7 +83,7 @@ function Navbar() {
                 <li><button onClick={logOutUser} className="navbar-button">Logout</button></li>
               </>
             ) : (
-              <>
+              <><li><Link to="/products" className="navbar-item">Products</Link></li>
                 <li><Link to="/signup" className="navbar-item">Sign Up</Link></li>
                 <li><Link to="/login" className="navbar-item">Login</Link></li>
               </>

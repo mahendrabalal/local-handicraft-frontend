@@ -8,7 +8,7 @@ function IsAnon({children}) {
     //If the authentication is still loading 
     if (isLoading) return <p>Loading...</p>;
 
-    if(isLoggedIn) {
+    if(!isLoggedIn) {
         //If the user is logged in, allow to see the page
         return children;
     }

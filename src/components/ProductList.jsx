@@ -41,13 +41,18 @@ const ProductList = () => {
                         <li key={product._id} className="product-item">
                             <Link to={`/products/${product._id}`} className="product-link">
                                 <img src={product.imageUrl} alt={product.name} className="product-image" />
-                                </Link>
-                                <div className="product-details">
-                                    <h2>{product.name}</h2>
-                                    <p>{product.description}</p>
-                                    <p>Price: ${product.price}</p>
-                                </div>
-                            
+                            </Link>
+                            <div className="product-details">
+                                <h2>{product.name}</h2>
+                                <p>{product.description}</p>
+                                <p>Price: ${product.price}</p>
+                                <button
+                                    className="buy-now-button"
+                                    onClick={() => window.location.href = `/checkout/${product._id}`}
+                                >
+                                    Buy it now
+                                </button>
+                            </div>
                         </li>
                     ))
                 ) : (

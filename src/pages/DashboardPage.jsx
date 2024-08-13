@@ -1,7 +1,9 @@
+// Dashboard.js
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/auth.context';
 import ProductForm from '../components/ProductForm';
+import Header from '../components/Header'; // Import the Header component
 import { Link } from 'react-router-dom'; // Correct import
 import './Dashboard.css';
 
@@ -86,13 +88,6 @@ function Dashboard() {
     }
   };
 
-  const handlePostItemClick = () => {
-    setShowForm(!showForm);
-    if (!showForm) {
-      setScrollTarget(null);
-    }
-  };
-
   const handleEditClick = (product) => {
     setFormData({
       name: product.name,
@@ -122,12 +117,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <header className="dashboard-header">
-        <h3>Hello, {user?.name}! We are glad to have you back.</h3>
-        <button onClick={handlePostItemClick} className="toggle-form-button">
-          {showForm ? 'Hide Form' : 'Post New Product'}
-        </button>
-      </header>
+      <Header user={user} showForm={showForm} setShowForm={setShowForm} />
 
       <main className="dashboard-content">
         {showForm && (

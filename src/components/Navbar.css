@@ -1,39 +1,30 @@
-/* Reset styles */
+/* General reset and box sizing */
 body, ul, li, a {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  max-width: 100%;
 }
 
-/* Navbar container and general styles */
+/* Navbar styling */
 .navbar {
-  background-color: rgb(200, 193, 193);
-  position: relative;
-  z-index: 1000; /* Ensure it's above other content */
-  padding: 0;
-  flex-wrap: wrap;
-
-  /*delet later*/
   background: linear-gradient(135deg, #545557, #a4b7bc); /* Gradient background */
   color: #fff;
-  padding: 20px;
+  padding: 10px 20px; /* Reduced padding for lower height */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
-  text-align: center;
-  margin-bottom: 20px;
+  text-align: center; /* Center text inside the navbar */
   position: relative;
   overflow: hidden; /* Ensure the pseudo-elements stay within bounds */
+  height: 60px; /* Set a specific height for the navbar */
 }
 
 .navbar-container {
   display: flex;
-  align-items: center;
-  justify-content: space-between; /* Distribute space between items */
-  position: relative;
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space between items */
+  height: 100%; /* Use full height of the navbar */
 }
 
-/* Hamburger Toggle Button */
 .navbar-toggle {
   display: none; /* Hidden by default */
   background: none;
@@ -49,26 +40,28 @@ body, ul, li, a {
   margin: 5px 0;
 }
 
-/* Logo */
 .navbar-brand {
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* Center the logo horizontally */
   flex-grow: 1; /* Allow the logo to take available space */
-  justify-content: center; /* Center the logo */
-  padding-top: 0%;
 }
 
 .navbar-logo {
-  width: 150px; /* Adjust size as needed */
+  width: 100px; /* Adjust size as needed */
   height: auto;
-  padding-top: 0%;
 }
 
-/* User Profile Icon */
 .navbar-user {
   display: flex;
   align-items: center;
-  padding-right: 10px;
+  justify-content: center; /* Center user profile horizontally */
+  position: fixed;
+  top: 10px; /* Position user profile at the top */
+  right: 10px; /* Position user profile at the right */
+  background: rgba(163, 127, 127, 0.5); /* Semi-transparent background */
+  border-radius: 50%; /* Rounded corners */
+  padding: 5px; /* Optional: Add padding */
 }
 
 .navbar-user-icon {
@@ -82,19 +75,18 @@ body, ul, li, a {
   list-style: none;
   display: flex;
   align-items: center;
+  justify-content: center; /* Center items horizontally */
   margin: 0;
   padding: 0;
   flex-grow: 1;
-  justify-content: center; /* Center items */
-  flex-wrap: wrap;
 }
 
 .navbar-item {
-  color: #160606;
+  color: #fff;
   text-decoration: none;
-  font-size: 18px;
-  margin: 0 15px; /* Spacing between items */
-  padding: 10px 20px;
+  font-size: 16px; /* Reduced font size */
+  margin: 0 10px; /* Adjust spacing */
+  padding: 8px 16px; /* Reduced padding */
 }
 
 .navbar-item:hover {
@@ -105,7 +97,7 @@ body, ul, li, a {
 .navbar-button {
   background: none;
   border: none;
-  color: #160606;
+  color: #fff;
   cursor: pointer;
   font-size: 16px;
 }
@@ -117,13 +109,13 @@ body, ul, li, a {
 /* Sidebar styling */
 .sidebar {
   position: fixed;
-  top: 0%;
-  left: -250px; /* Initially hidden off-screen to the right */
+  top: 0;
+  left: -250px; /* Initially hidden off-screen to the left */
   width: 250px;
   height: 100%;
   background-color: #333;
   overflow-y: auto;
-  transition: right 0.3s ease; /* Smooth transition for sliding effect */
+  transition: left 0.3s ease; /* Smooth transition for sliding effect */
   z-index: 1000; /* Ensure it's above other content */
   padding-top: 60px; /* Avoid overlapping with the navbar */
 }
@@ -135,6 +127,7 @@ body, ul, li, a {
 .sidebar-links {
   list-style: none;
   padding: 20px;
+  text-align: center; /* Center text inside sidebar links */
 }
 
 .sidebar-links li {
@@ -146,23 +139,27 @@ body, ul, li, a {
   .navbar-toggle {
     display: block; /* Show toggle button on mobile */
     position: absolute;
-    left: 0; /* Align toggle button to the left */
+    left: 20px; /* Align toggle button to the left */
     top: 50%; /* Center vertically */
     transform: translateY(-50%); /* Adjust vertical centering */
+    padding-bottom: 5%;
+  }
+
+  .navbar-container {
+    flex-direction: column; /* Stack items vertically for centering */
+    align-items: center; /* Center items horizontally */
   }
 
   .navbar-brand {
     order: 2; /* Center the logo in the middle */
-    flex-grow: 1; /* Allow the logo to take available space */
   }
 
   .navbar-user {
-    order: 3; /* Position user profile on the right */
-  }
-
-  .navbar-user-icon {
-    width: 30px;
-    height: 30px;
+    order: 1; /* Position user profile at the top-right */
+    position: fixed;
+    top: 10px; /* Position user profile at the top */
+    right: 10px; /* Position user profile at the right */
+    background: rgba(163, 127, 127, 0.5); /* Semi-transparent background */
   }
 
   .navbar-links {
