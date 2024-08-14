@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import "./Navbar.css";
 
+// Import images correctly
+import logo from "../assets/logo.png"; // Adjust the path according to your structure
+import defaultProfileIcon from "../assets/account-profile-user-icon--icon-search-engine-10.png";
+
 function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,7 +46,7 @@ function Navbar() {
 
         {/* Logo */}
         <Link to="/" className="navbar-brand">
-          <img src="/src/assets/logo.png" alt="Logo" className="navbar-logo"/>
+          <img src={logo} alt="Logo" className="navbar-logo"/>
         </Link>
 
         {/* Navigation Links */}
@@ -66,7 +70,7 @@ function Navbar() {
         <div className="navbar-user">
           {isLoggedIn && (
             <Link to="/profile">
-              <img src={user?.profileImageUrl || '/src/assets/account-profile-user-icon--icon-search-engine-10.png'} alt="Profile Icon" className="navbar-user-icon" />
+              <img src={user?.profileImageUrl || defaultProfileIcon} alt="Profile Icon" className="navbar-user-icon" />
             </Link>
           )}
         </div>
@@ -83,7 +87,8 @@ function Navbar() {
                 <li><button onClick={logOutUser} className="navbar-button">Logout</button></li>
               </>
             ) : (
-              <><li><Link to="/products" className="navbar-item">Products</Link></li>
+              <>
+                <li><Link to="/products" className="navbar-item">Products</Link></li>
                 <li><Link to="/signup" className="navbar-item">Sign Up</Link></li>
                 <li><Link to="/login" className="navbar-item">Login</Link></li>
               </>
