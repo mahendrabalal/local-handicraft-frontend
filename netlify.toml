@@ -1,0 +1,9 @@
+[build]
+  publish = "build" # Replace with your build directory if different
+  functions = "netlify/functions" # Adjust this path if your functions are in a different directory
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
