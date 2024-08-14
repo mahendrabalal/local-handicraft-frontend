@@ -1,6 +1,6 @@
 [build]
-  publish = "build" # Replace with your build directory if different
-  functions = "netlify/functions" # Adjust this path if your functions are in a different directory
+  publish = "dist" # Update to match your Vite build output directory
+  functions = "netlify/functions"
 
 [[redirects]]
   from = "/*"
