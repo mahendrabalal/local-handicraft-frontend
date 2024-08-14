@@ -6,6 +6,7 @@ import ProductForm from '../components/ProductForm';
 import Header from '../components/Header'; // Import the Header component
 import { Link } from 'react-router-dom'; // Correct import
 import './Dashboard.css';
+import { API_URL } from '../config';
 
 function Dashboard() {
   const { user } = useContext(AuthContext);
@@ -28,7 +29,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5005/api/products', {
+        const response = await axios.get(`${API_URL}/api/products`, {
           params: { userId: user.id }
         });
         setProducts(response.data);
@@ -57,10 +58,10 @@ function Dashboard() {
     };
     try {
       if (editProductId) {
-        await axios.put(`http://localhost:5005/api/products/${editProductId}`, processedFormData);
+        await axios.put(`${API_URL}/api/products/${editProductId}`, processedFormData);
         setSuccessMessage('Your product is updated successfully');
       } else {
-        const response = await axios.post('http://localhost:5005/api/products', processedFormData);
+        const response = await axios.post(`${API_URL}/api/products`, processedFormData);
         setScrollTarget(response.data._id);
         setSuccessMessage('You have posted your product successfully');
       }
@@ -75,7 +76,7 @@ function Dashboard() {
       });
       setEditProductId(null);
 
-      const updatedResponse = await axios.get('http://localhost:5005/api/products', {
+      const updatedResponse = await axios.get(`${API_URL}/api/products`, {
         params: { userId: user.id }
       });
       setProducts(updatedResponse.data);
@@ -104,8 +105,8 @@ function Dashboard() {
 
   const handleDeleteClick = async (id) => {
     try {
-      await axios.delete(`http://localhost:5005/api/products/${id}`);
-      const updatedResponse = await axios.get('http://localhost:5005/api/products', {
+      await axios.delete(`${API_URL}/api/products/${id}`);
+      const updatedResponse = await axios.get(`${API_URL}/api/products`, {
         params: { userId: user.id }
       });
       setProducts(updatedResponse.data);

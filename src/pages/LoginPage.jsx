@@ -3,8 +3,9 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import './LoginPage.css'; // Import the CSS file
+import { API_URL } from "../config";
 
-const API_URL = "http://localhost:5005";
+
 
 function LoginPage() {
     const [email, setEmail] = useState("");
