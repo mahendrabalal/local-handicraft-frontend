@@ -7,13 +7,15 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './config.js'
 
 // Handle environment-specific logic
-if (import.meta.env.MODE === 'development') {
+/*if (import.meta.env.MODE === 'development') {
   console.log('Running in development mode');
   // Development-specific code
 } else {
   console.log('Running in production mode');
+
   // Production-specific code
 }
+*/
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
