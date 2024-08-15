@@ -45,7 +45,7 @@ const Footer = () => {
         <p>&copy; 2024 Local Handicraft. All Rights Reserved.</p>
         <ul className="footer-links">
           <li><Link to="/privacy-policy">Privacy Policy</Link></li>
-          <li><a href="/terms-of-service">Terms of Service</a></li>
+          <li><Link to="/terms-and-conditions">Terms & Conditions</Link></li>
           <li><a href="/contact">Contact Us</a></li>
         </ul>
       </div>

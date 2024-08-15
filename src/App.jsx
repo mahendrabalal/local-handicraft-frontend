@@ -14,6 +14,7 @@ import ProductDetails from './pages/ProductDetails';
 import Checkout from './pages/Checkout';
 import IsAnon from './components/IsAnon';
 import Contact from './pages/ContactUs';
+import TermsAndConditions from './pages/TermsAndConditions';
 
 import './App.css';
 
@@ -33,6 +34,7 @@ function App() {
           <Route path='/products' element={<IsAnon><ProductList /></IsAnon>} />
           <Route path='/products/:id' element={<ProductDetails />} />
           <Route path='/checkout/:productId' element={<Checkout />} />
+          <Route path='/terms-and-condition' element={<TermsAndConditions />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </main>
