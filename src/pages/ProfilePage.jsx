@@ -14,7 +14,13 @@ function ProfilePage() {
         name: '',
         email: '',
         bio: '',
-        profileImage: ''  // Use profileImage instead of profilePicture
+        profileImage: '',
+        socialLinks: {
+            facebook: '',
+            twitter: '',
+            instagram: ''
+        },
+        hobbies: ''
     });
 
     useEffect(() => {
@@ -64,7 +70,13 @@ function ProfilePage() {
                 name: user.name,
                 email: user.email,
                 bio: user.bio || '',
-                profileImage: user.profileImage || ''  // Use profileImage here
+                profileImage: user.profileImage || '',
+                socialLinks: user.socialLinks || {
+                    facebook: '',
+                    twitter: '',
+                    instagram: ''
+                },
+                hobbies: user.hobbies || ''
             });
         }
         setIsEditing(!isEditing);
@@ -72,7 +84,12 @@ function ProfilePage() {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setEditData({ ...editData, [name]: value });
+        if (name.startsWith('socialLinks')) {
+            const key = name.split('.')[1];
+            setEditData({ ...editData, socialLinks: { ...editData.socialLinks, [key]: value } });
+        } else {
+            setEditData({ ...editData, [name]: value });
+        }
     };
 
     const handleLogout = () => {
@@ -90,20 +107,22 @@ function ProfilePage() {
 
     return (
         <div className="profile-page">
-            <div className="profile-header">
+            <div className="profile-card">
                 {isEditing ? (
                     <input
                         type="text"
-                        name="profileImage"  // Change profilePicture to profileImage
+                        name="profileImage"
                         value={editData.profileImage}
                         onChange={handleInputChange}
                         placeholder="Profile Image URL"
+                        className="profile-input"
                     />
                 ) : (
                     user.profileImage && (
                         <img src={user.profileImage} alt="Profile" className="profile-image" />
                     )
                 )}
+
                 <h1 className="profile-name">
                     {isEditing ? (
                         <input
@@ -111,6 +130,7 @@ function ProfilePage() {
                             name="name"
                             value={editData.name}
                             onChange={handleInputChange}
+                            className="profile-input"
                         />
                     ) : (
                         user.name
@@ -123,31 +143,90 @@ function ProfilePage() {
                             name="email"
                             value={editData.email}
                             onChange={handleInputChange}
+                            className="profile-input"
                         />
                     ) : (
                         user.email
                     )}
                 </p>
-            </div>
-            <div className="profile-details">
-                <h2>About Me</h2>
-                {isEditing ? (
-                    <textarea
-                        name="bio"
-                        value={editData.bio}
-                        onChange={handleInputChange}
-                        rows="5"
-                        cols="50"
-                    />
-                ) : (
-                    <p>{user.bio || "No bio available."}</p>
-                )}
-            </div>
-            <div className="profile-actions">
-                <button className="edit-button" onClick={handleEditClick}>
-                    {isEditing ? "Save" : "Edit Profile"}
-                </button>
-                <button className="logout-button" onClick={handleLogout}>Logout</button>
+
+                <div className="profile-details">
+                    <h2>About Me</h2>
+                    {isEditing ? (
+                        <textarea
+                            name="bio"
+                            value={editData.bio}
+                            onChange={handleInputChange}
+                            rows="5"
+                            cols="50"
+                            className="profile-textarea"
+                        />
+                    ) : (
+                        <p>{user.bio || "No bio available."}</p>
+                    )}
+                </div>
+
+                <div className="profile-section">
+                    <h2>Social Links</h2>
+                    {isEditing ? (
+                        <div className="social-links">
+                            <input
+                                type="text"
+                                name="socialLinks.facebook"
+                                value={editData.socialLinks.facebook}
+                                onChange={handleInputChange}
+                                placeholder="Facebook"
+                                className="profile-input"
+                            />
+                            <input
+                                type="text"
+                                name="socialLinks.twitter"
+                                value={editData.socialLinks.twitter}
+                                onChange={handleInputChange}
+                                placeholder="Twitter"
+                                className="profile-input"
+                            />
+                            <input
+                                type="text"
+                                name="socialLinks.instagram"
+                                value={editData.socialLinks.instagram}
+                                onChange={handleInputChange}
+                                placeholder="Instagram"
+                                className="profile-input"
+                            />
+                        </div>
+                    ) : (
+                        <div className="social-links">
+                            {user.socialLinks?.facebook && <p><a href={user.socialLinks.facebook} target="_blank" rel="noopener noreferrer">Facebook</a></p>}
+                            {user.socialLinks?.twitter && <p><a href={user.socialLinks.twitter} target="_blank" rel="noopener noreferrer">Twitter</a></p>}
+                            {user.socialLinks?.instagram && <p><a href={user.socialLinks.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></p>}
+                        </div>
+                    )}
+                </div>
+
+                <div className="profile-section">
+                    <h2>Hobbies</h2>
+                    {isEditing ? (
+                        <textarea
+                            name="hobbies"
+                            value={editData.hobbies}
+                            onChange={handleInputChange}
+                            rows="3"
+                            cols="50"
+                            className="profile-textarea"
+                            placeholder="List your hobbies..."
+                        />
+                    ) : (
+                        <p>{user.hobbies || "No hobbies listed."}</p>
+                    )}
+                </div>
+
+                <div className="profile-actions">
+                    <button className="edit-button" onClick={handleEditClick}>
+                        {isEditing ? "Save" : "Edit Profile"}
+                    </button>
+                    <button className="logout-button" onClick={handleLogout}>Logout</button>
+                </div>
             </div>
         </div>
     );
