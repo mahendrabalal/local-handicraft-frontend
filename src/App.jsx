@@ -34,7 +34,7 @@ function App() {
           <Route path='/products' element={<IsAnon><ProductList /></IsAnon>} />
           <Route path='/products/:id' element={<ProductDetails />} />
           <Route path='/checkout/:productId' element={<Checkout />} />
-          <Route path='/terms-and-condition' element={<TermsAndConditions />} />
+          <Route path='/terms-and-conditions' element={<TermsAndConditions />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </main>
