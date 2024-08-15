@@ -1,0 +1,56 @@
+.dashboard-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    transition: top 0.3s ease-in-out;
+    z-index: 1000;
+    padding: 0.5rem 1rem; /* Reduced padding to decrease height */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a slight shadow */
+  }
+  
+  .dashboard-header.hidden {
+    top: -100px;
+  }
+  
+  .dashboard-header.visible {
+    top: 0;
+  }
+  
+  .header-content {
+    padding: 0.5rem 0; /* Reduced padding inside header content */
+    text-align: center;
+  }
+  
+  .slider {
+    position: relative;
+    height: 150px; /* Reduced height of the slider */
+    overflow: hidden;
+  }
+  
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    min-width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .toggle-form-button {
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.8rem; /* Slightly smaller button */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .toggle-form-button:hover {
+    background-color: #0056b3;
+  }
+  

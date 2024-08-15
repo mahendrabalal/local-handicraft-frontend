@@ -159,6 +159,8 @@
   background-color: #c82333;
 }
 
+
+
 /* Media query for small screens */
 @media (max-width: 768px) {
   .dashboard-content {

@@ -1,9 +1,0 @@
-[build]
-  publish = "dist" # Update to match your Vite build output directory
-  functions = "netlify/functions"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
