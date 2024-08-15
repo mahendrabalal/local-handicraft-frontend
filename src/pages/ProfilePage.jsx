@@ -4,7 +4,6 @@ import { AuthContext } from '../context/auth.context';
 import './ProfilePage.css';
 import { API_URL } from '../config';
 
-
 function ProfilePage() {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -15,7 +14,7 @@ function ProfilePage() {
         name: '',
         email: '',
         bio: '',
-        profilePicture: ''
+        profileImage: ''  // Use profileImage instead of profilePicture
     });
 
     useEffect(() => {
@@ -65,7 +64,7 @@ function ProfilePage() {
                 name: user.name,
                 email: user.email,
                 bio: user.bio || '',
-                profilePicture: user.profilePicture || ''
+                profileImage: user.profileImage || ''  // Use profileImage here
             });
         }
         setIsEditing(!isEditing);
@@ -95,14 +94,14 @@ function ProfilePage() {
                 {isEditing ? (
                     <input
                         type="text"
-                        name="profilePicture"
-                        value={editData.profilePicture}
+                        name="profileImage"  // Change profilePicture to profileImage
+                        value={editData.profileImage}
                         onChange={handleInputChange}
-                        placeholder="Profile Picture URL"
+                        placeholder="Profile Image URL"
                     />
                 ) : (
-                    user.profilePicture && (
-                        <img src={user.profilePicture} alt="Profile" className="profile-picture" />
+                    user.profileImage && (
+                        <img src={user.profileImage} alt="Profile" className="profile-image" />
                     )
                 )}
                 <h1 className="profile-name">
