@@ -56,7 +56,6 @@ body, ul, li, a {
   display: flex;
   align-items: center;
   justify-content: center; /* Center user profile horizontally */
-  position: fixed;
   top: 10px; /* Position user profile at the top */
   right: 10px; /* Position user profile at the right */
   background: rgba(163, 127, 127, 0.5); /* Semi-transparent background */

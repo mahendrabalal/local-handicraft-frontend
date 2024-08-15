@@ -1,10 +1,9 @@
-// Dashboard.js
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/auth.context';
 import ProductForm from '../components/ProductForm';
-import Header from '../components/Header'; // Import the Header component
-import { Link } from 'react-router-dom'; // Correct import
+import Header from '../components/Header';
+import { Link } from 'react-router-dom';
 import './Dashboard.css';
 import { API_URL } from '../config';
 
@@ -99,7 +98,7 @@ function Dashboard() {
       stock: product.stock
     });
     setEditProductId(product._id);
-    setShowForm(true); // Ensure form is shown
+    setShowForm(true);
     setScrollTarget(product._id);
   };
 
@@ -119,7 +118,6 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <Header user={user} showForm={showForm} setShowForm={setShowForm} />
-
       <main className="dashboard-content">
         {showForm && (
           <ProductForm 

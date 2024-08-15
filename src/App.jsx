@@ -4,8 +4,6 @@ import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/Home';
 import DashboardPage from './pages/DashboardPage';
-import UserProfile from './pages/UserProfile';
-import Settings from './components/Setting';
 import IsPrivate from './components/IsPrivate';
 import Footer from './components/Footer';
 import PrivacyPolicy from './pages/PrivacyPolicy';
@@ -15,6 +13,7 @@ import ProfilePage from './pages/ProfilePage';
 import ProductDetails from './pages/ProductDetails';
 import Checkout from './pages/Checkout';
 import IsAnon from './components/IsAnon';
+import Contact from './pages/ContactUs';
 
 import './App.css';
 
@@ -28,9 +27,8 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-          <Route path="/dashboard" element={<IsPrivate><DashboardPage /></IsPrivate>}>
-            <Route path="settings" element={<Settings />} />
-          </Route>
+          <Route path="/dashboard" element={<IsPrivate><DashboardPage /></IsPrivate>} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<IsPrivate><ProfilePage /></IsPrivate>} />
           <Route path='/products' element={<IsAnon><ProductList /></IsAnon>} />
           <Route path='/products/:id' element={<ProductDetails />} />

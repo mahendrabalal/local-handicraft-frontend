@@ -1,90 +1,85 @@
-import React, { useState } from 'react';
-import './Settings.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-function Settings() {
-  const [activeTab, setActiveTab] = useState('profile');
+const Settings = () => {
+    const [user, setUser] = useState({ name: '', email: '' });
+    const [loading, setLoading] = useState(true);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [formData, setFormData] = useState({ name: '', email: '' });
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'profile':
-        return (
-          <div className="settings-content">
-            <h2>Profile Settings</h2>
-            <label>
-              Name:
-              <input type="text" placeholder="Your name" />
-            </label>
-            <label>
-              Email:
-              <input type="email" placeholder="Your email" />
-            </label>
-            <button className="save-button">Save Changes</button>
-          </div>
-        );
-      case 'account':
-        return (
-          <div className="settings-content">
-            <h2>Account Settings</h2>
-            <label>
-              Change Password:
-              <input type="password" placeholder="New password" />
-            </label>
-            <label>
-              Confirm Password:
-              <input type="password" placeholder="Confirm new password" />
-            </label>
-            <button className="save-button">Update Password</button>
-          </div>
-        );
-      case 'notifications':
-        return (
-          <div className="settings-content">
-            <h2>Notification Settings</h2>
-            <label>
-              <input type="checkbox" />
-              Email Notifications
-            </label>
-            <label>
-              <input type="checkbox" />
-              SMS Notifications
-            </label>
-            <button className="save-button">Save Preferences</button>
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
+    useEffect(() => {
+        // Fetch the current user profile data
+        const fetchUserProfile = async () => {
+            try {
+                const response = await axios.get('/auth/profile', {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+                });
+                setUser(response.data);
+                setFormData({ name: response.data.name, email: response.data.email });
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching user profile', error);
+                setErrorMessage('Failed to fetch user profile.');
+                setLoading(false);
+            }
+        };
 
-  return (
-    <div className="settings-container">
-      <div className="settings-sidebar">
-        <ul>
-          <li
-            className={activeTab === 'profile' ? 'active' : ''}
-            onClick={() => setActiveTab('profile')}
-          >
-            Profile
-          </li>
-          <li
-            className={activeTab === 'account' ? 'active' : ''}
-            onClick={() => setActiveTab('account')}
-          >
-            Account
-          </li>
-          <li
-            className={activeTab === 'notifications' ? 'active' : ''}
-            onClick={() => setActiveTab('notifications')}
-          >
-            Notifications
-          </li>
-        </ul>
-      </div>
-      <div className="settings-main">
-        {renderContent()}
-      </div>
-    </div>
-  );
-}
+        fetchUserProfile();
+    }, []);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({ ...prevState, [name]: value }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.put('/auth/profile', formData, {
+                headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+            });
+            setUser(response.data);
+            setSuccessMessage('Profile updated successfully.');
+            setErrorMessage('');
+        } catch (error) {
+            console.error('Error updating profile', error);
+            setErrorMessage('Failed to update profile.');
+        }
+    };
+
+    if (loading) return <p>Loading...</p>;
+
+    return (
+        <div className="settings">
+            <h1>Settings</h1>
+            {successMessage && <div className="success-message">{successMessage}</div>}
+            {errorMessage && <div className="error-message">{errorMessage}</div>}
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="name">Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                    />
+                </div>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    );
+};
 
 export default Settings;

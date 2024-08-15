@@ -6,48 +6,17 @@
 
 /* Header styling with sliding background */
 .dashboard-header {
-  position: relative;
   text-align: center;
   border-radius: 10px;
   margin: 0;
   overflow: hidden;
   color: #fff;
   padding-top: 5px;
-}
-
-.slider {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.slides {
-  display: flex;
-  width: 300%;
-  height: 100%;
-  transition: transform 1s ease-in-out;
-  animation: slide 15s infinite;
-}
-
-.slide {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-}
-
-@keyframes slide {
-  0% { transform: translateX(0); }
-  33% { transform: translateX(-100%); }
-  66% { transform: translateX(-200%); }
-  100% { transform: translateX(0); }
+  background: #d8d2d2; /* Ensure a background color so content doesn't show through */
 }
 
 .header-content {
   position: relative;
-  z-index: 1; /* Ensure content is above background */
   padding: 20px;
   background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
   border-radius: 10px;
@@ -120,7 +89,11 @@
 }
 
 .product-image {
-  height: auto;
+  width: 100%;
+  height: 50px; /* Reduced height for the image */
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .product-info p {

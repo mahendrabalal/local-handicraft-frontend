@@ -54,8 +54,9 @@ function Navbar() {
           {isLoggedIn ? (
             <>
               <li><Link to="/profile" className="navbar-item">Profile</Link></li>
-              <li><Link to="/settings" className="navbar-item">Settings</Link></li>
+              <li><Link to="/Contact" className="navbar-item">Contact Us</Link></li>
               <li><button onClick={logOutUser} className="navbar-button">Logout</button></li>
+
             </>
           ) : (
             <>
@@ -83,7 +84,6 @@ function Navbar() {
               <>
                 <li><Link to="/" className="navbar-item">Dashboard</Link></li>
                 <li><Link to="/profile" className="navbar-item">Profile</Link></li>
-                <li><Link to="/settings" className="navbar-item">Settings</Link></li>
                 <li><button onClick={logOutUser} className="navbar-button">Logout</button></li>
               </>
             ) : (

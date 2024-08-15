@@ -89,4 +89,10 @@
   .save-button:hover {
     background-color: #2980b9;
   }
+  /* Success Message */
+.success-message {
+    color: #27ae60;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
   
