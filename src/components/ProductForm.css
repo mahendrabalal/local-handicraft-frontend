@@ -84,7 +84,7 @@
 
 .success-message,
 .error-message {
-  font-size: 0.875rem; /* Match product details font size */
+  font-size: 0.875rem; 
   text-align: center;
   margin-top: 10px;
   padding: 8px;

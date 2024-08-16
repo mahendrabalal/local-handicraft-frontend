@@ -3,14 +3,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import "./Navbar.css";
 
-// Import images correctly
-import logo from "../assets/logo.png"; // Adjust the path according to your structure
+import logo from "../assets/logo.png"; 
 import defaultProfileIcon from "../assets/account-profile-user-icon--icon-search-engine-10.png";
 
 function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const sidebarRef = useRef(null); // Ref for the sidebar
+  const sidebarRef = useRef(null); 
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -18,7 +17,7 @@ function Navbar() {
 
   const handleClickOutside = (event) => {
     if (sidebarRef.current && !sidebarRef.current.contains(event.target) && !event.target.closest('.navbar-toggle')) {
-      setIsMenuOpen(false); // Close the sidebar if clicking outside
+      setIsMenuOpen(false); 
     }
   };
 
@@ -32,7 +31,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        {/* Hamburger Toggle Button */}
+        
         <button 
           className="navbar-toggle" 
           onClick={handleMenuToggle} 

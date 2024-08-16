@@ -3,7 +3,7 @@
 .login-page {
     display: flex;
     height: 100vh;
-    background-color:rgb(224, 229, 233);
+    background-color: rgb(224, 229, 233);
 }
 
 .login-info {
@@ -75,10 +75,6 @@
     background-color: #0056b3;
 }
 
-.error-message {
-    color: red;
-    margin-top: 10px;
-}
 
 .signup-prompt {
     margin-top: 20px;
@@ -91,4 +87,13 @@
 
 .signup-link:hover {
     text-decoration: underline;
+}
+.login-form .error-message {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb; /* Border matching background */
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-size: 0.9em;
 }

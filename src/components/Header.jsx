@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css'; // Ensure you have corresponding styles
+import './Header.css'; 
 
 function Header({ user, showForm, setShowForm }) {
   const handlePostItemClick = () => {

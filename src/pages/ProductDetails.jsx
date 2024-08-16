@@ -2,19 +2,19 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchProductById } from '../services/productServices';
 import { AuthContext } from '../context/auth.context';
-import StarRating from '../components/StarRating'; // Import StarRating component
+import StarRating from '../components/StarRating';
 import './ProductDetails.css';
 
 const ProductDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext); // Access the user context
+    const { user } = useContext(AuthContext);
     const [product, setProduct] = useState(null);
-    const [rating, setRating] = useState(0); // Manage star rating
+    const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
     const [error, setError] = useState(null);
-    const [successMessage, setSuccessMessage] = useState(''); // State for success message
-    const [loading, setLoading] = useState(false); // State for loading review submission
+    const [successMessage, setSuccessMessage] = useState('');
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const getProduct = async () => {
@@ -39,11 +39,11 @@ const ProductDetails = () => {
             alert('Please select a rating between 1 and 5 stars.');
             return;
         }
-
+    
         setLoading(true); // Set loading to true when submission starts
     
         try {
-            const response = await fetch(`/api/reviews/product/${id}/rate`, {
+            const response = await fetch(`/api/reviews/product/${id}/rate`, { // Ensure this URL matches the backend route
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -71,8 +71,8 @@ const ProductDetails = () => {
         }
     };
     
-    if (error) return <p className="error-message">{error}</p>;
 
+    if (error) return <p className="error-message">{error}</p>;
     if (!product) return <p>Loading...</p>;
 
     return (
@@ -92,7 +92,6 @@ const ProductDetails = () => {
             <div className="product-details-buttons">
                 <button className="go-back-button" onClick={() => navigate(-1)}>Go Back</button>
             </div>
-            {/* Review Form */}
             <div className="review-form">
                 <h2>Leave a Review</h2>
                 <div>

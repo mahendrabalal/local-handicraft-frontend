@@ -20,7 +20,7 @@
 
 .review-button, .go-back-button {
     text-align: center;
-    display: inline-block; /* Ensure buttons are inline-block elements */
+    display: inline-block; 
     padding: 10px 20px;
     border-radius: 5px;
     font-size: 16px;
@@ -48,7 +48,14 @@
 /* src/pages/ProductDetails.css */
 
 .success-message {
-    color: #28a745; /* Green color for success messages */
     font-size: 16px;
     margin-top: 10px;
+}
+.error-message {
+    color: red; /* Set the text color for the error message */
+    background: transparent; /* Ensure the background is transparent */
+    padding: 10px; /* Optional: Add padding if needed */
+    border: 1px solid red; /* Optional: Add a border to enhance visibility */
+    border-radius: 4px; /* Optional: Add rounded corners for better aesthetics */
+    margin-bottom: 10px; /* Optional: Add margin for spacing */
 }

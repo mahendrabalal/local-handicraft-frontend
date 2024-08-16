@@ -32,3 +32,4 @@ export const fetchProductById = async (id) => {
         throw error; // Propagate error to the caller
     }
 };
+

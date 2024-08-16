@@ -1,15 +1,15 @@
+//productList//
+
+
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
 import { fetchProducts } from '../services/productServices';
 import { AuthContext } from '../context/auth.context';
 import { Link } from 'react-router-dom';
-import StarRating from '../components/StarRating'; // Ensure correct import path
 import './ProductList.css';
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null);
-    const [userToken, setUserToken] = useState(null);
 
     const { isLoggedIn, user } = useContext(AuthContext);
 
@@ -23,41 +23,8 @@ const ProductList = () => {
             }
         };
 
-        if (isLoggedIn && user) {
-            setUserToken(user.token);
-        }
-
         getProducts();
-    }, [isLoggedIn, user]);
-
-    const handleRatingSubmit = async (productId, rating) => {
-        if (!userToken) {
-            alert('You must be logged in to rate products.');
-            return;
-        }
-
-        try {
-            const response = await axios.post(
-                `/api/reviews/product/${productId}/rate`,
-                { rating },
-                {
-                    headers: {
-                        Authorization: `Bearer ${userToken}`,
-                    },
-                }
-            );
-            const newAverageRating = response.data.averageRating;
-            setProducts((prevProducts) =>
-                prevProducts.map((product) =>
-                    product._id === productId
-                        ? { ...product, averageRating: newAverageRating }
-                        : product
-                )
-            );
-        } catch (error) {
-            alert('Failed to submit rating.');
-        }
-    };
+    }, []);
 
     return (
         <div className="product-list-container">
@@ -81,10 +48,6 @@ const ProductList = () => {
                                 <h2>{product.name}</h2>
                                 <p>{product.description}</p>
                                 <p>Price: ${product.price}</p>
-                                {/* Display average rating */}
-                                <div className="average-rating">
-                                    <h4>Average Rating: {product.averageRating ? `${product.averageRating.toFixed(1)}/5` : 'No ratings yet'}</h4>
-                                </div>
                                 {/* Display reviews */}
                                 {product.reviews && product.reviews.length > 0 ? (
                                     <div className="reviews">
@@ -100,16 +63,7 @@ const ProductList = () => {
                                         )}
                                     </div>
                                 ) : (
-                                    <div className="review-rating">
-                                        <p>No reviews yet</p>
-                                        {isLoggedIn && (
-                                            <StarRating
-                                                productId={product._id}
-                                                onRate={handleRatingSubmit}
-                                                userToken={userToken}
-                                            />
-                                        )}
-                                    </div>
+                                    <p>No reviews yet</p>
                                 )}
                                 <button
                                     className="buy-now-button"
@@ -129,3 +83,4 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
