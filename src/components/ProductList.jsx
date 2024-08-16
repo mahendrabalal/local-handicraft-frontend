@@ -3,7 +3,7 @@ import axios from 'axios';
 import { fetchProducts } from '../services/productServices';
 import { AuthContext } from '../context/auth.context';
 import { Link } from 'react-router-dom';
-import StarRating from '../components/StarRating'; // Correct import path
+import StarRating from '../components/StarRating'; // Ensure correct import path
 import './ProductList.css';
 
 const ProductList = () => {
@@ -30,7 +30,7 @@ const ProductList = () => {
         getProducts();
     }, [isLoggedIn, user]);
 
-    const handleRatingSubmit = async (productId, rating, userToken) => {
+    const handleRatingSubmit = async (productId, rating) => {
         if (!userToken) {
             alert('You must be logged in to rate products.');
             return;
@@ -38,7 +38,7 @@ const ProductList = () => {
 
         try {
             const response = await axios.post(
-                `${API_URL}/api/reviews/product/${productId}/rate`,
+                `/api/reviews/product/${productId}/rate`,
                 { rating },
                 {
                     headers: {

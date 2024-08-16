@@ -63,6 +63,7 @@ function Navbar() {
               <li><Link to="/products" className="navbar-item">Products</Link></li>
               <li><Link to="/signup" className="navbar-item">Sign Up</Link></li>
               <li><Link to="/login" className="navbar-item">Login</Link></li>
+              <li><Link to="/contact" className="navbar-item">Contact Us</Link></li>
             </>
           )}
         </ul>

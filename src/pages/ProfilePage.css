@@ -3,18 +3,20 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-color: #f4f4f9;
     padding: 20px;
 }
 
 .profile-card {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
     width: 100%;
-    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
     position: relative;
+    text-align: center; /* Center text and inputs inside profile-card */
 }
 
 .profile-image {
@@ -22,71 +24,88 @@
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    margin: 0 auto 15px;
-    border: 4px solid #ff9966;
+    margin: 0 auto 20px; /* Center image horizontally */
+    border: 3px solid #ddd;
 }
 
-.profile-name {
-    font-size: 2em;
-    font-weight: 600;
-    margin: 10px 0;
-    color: #333;
+.profile-input {
+    width: calc(100% - 22px); /* Adjusted to fit within padding */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
-.profile-email {
-    font-size: 1.2em;
-    color: #888;
+.profile-input-image {
     margin-bottom: 20px;
 }
 
-.profile-details,
-.profile-section {
-    margin: 20px 0;
-    text-align: left;
-}
-
-.profile-details p {
-    text-align: center;
-}
-.profile-details h2,
-.profile-section h2 {
-    font-size: 1.5em;
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 10px;
-    color: #333;
 }
 
-.profile-section p {
-    text-align: center;
+.profile-email-label {
+    font-size: 18px;
+    font-weight: bold;
 }
-.profile-textarea,
-.profile-input {
-    width: 100%;
+
+.profile-email {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.profile-details {
+    margin-bottom: 20px;
+}
+
+.profile-textarea {
+    width: calc(100% - 22px); /* Adjusted to fit within padding */
     padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
     border: 1px solid #ddd;
-    font-size: 1em;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
-.social-links p a {
-    color: #ff9966;
+.profile-section {
+    margin-bottom: 20px;
+}
+
+.social-links p {
+    margin: 5px 0;
+}
+
+.social-links a {
+    color: #1a73e8;
     text-decoration: none;
-}
-
-.social-links p a:hover {
-    text-decoration: underline;
+    font-size: 16px;
 }
 
 .profile-actions {
-    margin-top: 20px;
     display: flex;
-    justify-content: space-between
+    justify-content: center; /* Center buttons horizontally */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+}
+
+.edit-button, .logout-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+}
+
+.edit-button {
+    background-color: #4CAF50;
 }
 
 .logout-button {
-    background-color: rgb(172, 32, 32);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 4;
+    background-color: #f44336;
 }

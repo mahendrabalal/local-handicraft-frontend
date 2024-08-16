@@ -1,58 +1,54 @@
 .product-details-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-    position: relative; /* Set position relative to position the button at the bottom */
+    text-align: center;
 }
-
-.product-details-content {
+.product-details-buttons {
     display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    margin-bottom: 60px; /* Ensure space for the button */
+    gap: 10px;
+    justify-content: center; /* Center the buttons horizontally */
+    margin-top: 20px;
+    text-align: center;
 }
 
 .product-detail-image {
     max-width: 400px;
-    width: 100%;
     height: auto;
-    border-radius: 8px;
+    padding: 10px;
+    margin: 0 auto; /* Center the image horizontally */
+    display: block; /* Ensure image is treated as a block element */
+    border-radius: 10px;
 }
 
-.product-detail-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.product-detail-info h1 {
-    margin: 0;
-    font-size: 2rem;
-}
-
-.product-detail-info p {
-    margin: 5px 0;
-    font-size: 1.2rem;
-}
-
-.product-detail-info strong {
-    font-weight: bold;
-}
-
-.go-back-button {
-    position: absolute;
-    bottom: 20px; /* Distance from the bottom */
-    left: 20px; /* Distance from the left */
-    background-color: #007bff;
-    color: white;
-    border: none;
+.review-button, .go-back-button {
+    text-align: center;
+    display: inline-block; /* Ensure buttons are inline-block elements */
     padding: 10px 20px;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.review-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.review-button:hover {
+    background-color: #218838;
+}
+
+.go-back-button {
+    background-color: #007bff;
+    color: white;
 }
 
 .go-back-button:hover {
     background-color: #0056b3;
+}
+/* src/pages/ProductDetails.css */
+
+.success-message {
+    color: #28a745; /* Green color for success messages */
+    font-size: 16px;
+    margin-top: 10px;
 }

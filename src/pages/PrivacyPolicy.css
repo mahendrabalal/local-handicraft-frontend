@@ -1,76 +1,68 @@
-/* PrivacyPolicy.css */
 .privacy-policy {
-  max-width: 100%;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: #444;
-  background: linear-gradient(135deg, #f2f2f2, #ffffff);
+  background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: #333;
 }
 
 .privacy-policy h1 {
-  font-size: 2.5em;
+  font-size: 32px;
   margin-bottom: 20px;
   color: #2c3e50;
   text-align: center;
-  font-weight: 700;
-  border-bottom: 4px solid #3498db;
-  padding-bottom: 10px;
 }
 
 .privacy-policy p {
-  margin-bottom: 15px;
-  font-size: 1em;
-  color: #555;
-}
-
-.privacy-policy h2 {
-  font-size: 2em;
-  margin-bottom: 15px;
-  color: #2980b9;
-  border-bottom: 2px solid #2980b9;
-  padding-bottom: 8px;
-  font-weight: 600;
-}
-
-.privacy-policy ul {
-  list-style-type: disc;
-  margin: 0; /* Reset margin */
-  padding: 0; /* Reset padding */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center list items horizontally */
-}
-
-.privacy-policy li {
-  margin-bottom: 10px;
-  font-size: 1em;
-  text-align: center; /* Center text within each list item */
-}
-
-.privacy-policy a {
-  color: #2980b9;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.privacy-policy a:hover {
-  text-decoration: underline;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
 .section {
-  margin-bottom: 40px;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
 }
 
-.contact-email {
+.section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #3498db;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+}
+
+.section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.section li {
+  margin-bottom: 10px;
+}
+
+.contact-email a {
+  color: #3498db;
+  text-decoration: none;
   font-weight: bold;
-  font-size: 1.1em;
+}
+
+.contact-email a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .privacy-policy {
+      padding: 15px;
+  }
+
+  .privacy-policy h1 {
+      font-size: 28px;
+  }
+
+  .section h2 {
+      font-size: 20px;
+  }
 }

@@ -115,8 +115,9 @@ function ProfilePage() {
                         value={editData.profileImage}
                         onChange={handleInputChange}
                         placeholder="Profile Image URL"
-                        className="profile-input"
+                        className="profile-input profile-input-image"
                     />
+                    
                 ) : (
                     user.profileImage && (
                         <img src={user.profileImage} alt="Profile" className="profile-image" />
@@ -136,6 +137,7 @@ function ProfilePage() {
                         user.name
                     )}
                 </h1>
+                <h2 className="profile-email-label">E-mail</h2>
                 <p className="profile-email">
                     {isEditing ? (
                         <input
@@ -149,25 +151,22 @@ function ProfilePage() {
                         user.email
                     )}
                 </p>
-
+                <h2>About Me</h2>
                 <div className="profile-details">
-                    <h2>About Me</h2>
                     {isEditing ? (
                         <textarea
                             name="bio"
                             value={editData.bio}
                             onChange={handleInputChange}
                             rows="5"
-                            cols="50"
                             className="profile-textarea"
                         />
                     ) : (
                         <p>{user.bio || "No bio available."}</p>
                     )}
                 </div>
-
+                <h2>Social Links</h2>
                 <div className="profile-section">
-                    <h2>Social Links</h2>
                     {isEditing ? (
                         <div className="social-links">
                             <input
@@ -203,16 +202,14 @@ function ProfilePage() {
                         </div>
                     )}
                 </div>
-
+                <h2>Hobbies</h2>
                 <div className="profile-section">
-                    <h2>Hobbies</h2>
                     {isEditing ? (
                         <textarea
                             name="hobbies"
                             value={editData.hobbies}
                             onChange={handleInputChange}
                             rows="3"
-                            cols="50"
                             className="profile-textarea"
                             placeholder="List your hobbies..."
                         />

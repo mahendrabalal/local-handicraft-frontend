@@ -1,17 +1,10 @@
-// components/StarRating.js
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import './StarRating.css'; // Ensure this CSS file exists
+// src/components/StarRating.js
+import React from 'react';
+import './StarRating.css';
 
-const StarRating = ({ productId, onRate, userToken }) => {
-    const [hoveredRating, setHoveredRating] = useState(null);
-    const [selectedRating, setSelectedRating] = useState(null);
-
-    const handleMouseEnter = (rating) => setHoveredRating(rating);
-    const handleMouseLeave = () => setHoveredRating(null);
-    const handleClick = (rating) => {
-        setSelectedRating(rating);
-        onRate(productId, rating, userToken);
+const StarRating = ({ rating, setRating }) => {
+    const handleClick = (newRating) => {
+        setRating(newRating);
     };
 
     return (
@@ -19,9 +12,7 @@ const StarRating = ({ productId, onRate, userToken }) => {
             {[1, 2, 3, 4, 5].map((star) => (
                 <span
                     key={star}
-                    className={`star ${star <= (hoveredRating || selectedRating) ? 'filled' : ''}`}
-                    onMouseEnter={() => handleMouseEnter(star)}
-                    onMouseLeave={handleMouseLeave}
+                    className={`star ${star <= rating ? 'filled' : ''}`}
                     onClick={() => handleClick(star)}
                 >
                     ★
@@ -29,12 +20,6 @@ const StarRating = ({ productId, onRate, userToken }) => {
             ))}
         </div>
     );
-};
-
-StarRating.propTypes = {
-    productId: PropTypes.string.isRequired,
-    onRate: PropTypes.func.isRequired,
-    userToken: PropTypes.string,
 };
 
 export default StarRating;
