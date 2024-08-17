@@ -1,14 +1,33 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./Contact.css";
 
 function Contact() {
     const [submitted, setSubmitted] = useState(false);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
 
-    const handleSubmit = (event) => {
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        setTimeout(() => {
-            setSubmitted(true);
-        }, 1500);
+        try {
+            const response = await axios.post('http://localhost:5005/api/email/send-email', formData); // Ensure this matches your backend URL
+            if (response.status === 200) {
+                setSubmitted(true);
+            }
+        } catch (error) {
+            console.error('Error sending email:', error);
+        }
     };
 
     return (
@@ -25,16 +44,44 @@ function Contact() {
                     </p>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="name">Name:</label>
-                        <input type="text" id="name" name="name" required />
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            value={formData.name}
+                            onChange={handleChange}
+                        />
 
                         <label htmlFor="email">Email:</label>
-                        <input type="email" id="email" name="email" required />
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            value={formData.email}
+                            onChange={handleChange}
+                        />
 
                         <label htmlFor="subject">Subject:</label>
-                        <input type="text" id="subject" name="subject" required />
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            required
+                            value={formData.subject}
+                            onChange={handleChange}
+                        />
 
                         <label htmlFor="message">Message:</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            required
+                            value={formData.message}
+                            onChange={handleChange}
+                        ></textarea>
 
                         <button type="submit">Submit</button>
                     </form>
