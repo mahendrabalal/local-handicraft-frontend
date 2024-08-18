@@ -9,7 +9,7 @@ function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(undefined);
-    
+
     const navigate = useNavigate();
     const { storeToken, authenticateUser } = useContext(AuthContext);
 
@@ -25,15 +25,13 @@ function LoginPage() {
             });
             const token = response.data.authToken; // Token received from server
             console.log('Token received:', token); // Verify the token
-            
-            // Store the token in localStorage
             localStorage.setItem('token', token);
             console.log('Token stored in localStorage:', localStorage.getItem('token')); // Verify storage
-            
-            storeToken(token); // Store the token in context or other state management
+            storeToken(token); // Store the token in context
             authenticateUser(); // Update context state
             navigate('/'); // Redirect to home page
         } catch (error) {
+            console.error('Login error:', error); // Log the error
             setErrorMessage(error.response?.data?.message || 'An error occurred');
         }
     };
