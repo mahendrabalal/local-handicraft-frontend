@@ -5,13 +5,11 @@ import { AuthContext } from "../context/auth.context";
 import './LoginPage.css'; // Import the CSS file
 import { API_URL } from "../config";
 
-
-
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState(undefined);
-    
+    const [errorMessage, setErrorMessage] = useState("");
+
     const navigate = useNavigate();
     const { storeToken, authenticateUser } = useContext(AuthContext);
 
@@ -21,17 +19,26 @@ function LoginPage() {
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         try {
+            console.log(`Sending login request to: ${API_URL}/auth/login`); // Debugging statement
             const response = await axios.post(`${API_URL}/auth/login`, {
                 email,
                 password
             });
+
             const token = response.data.authToken; // Token received from server
             console.log('Token received:', token); // Verify the token
-            storeToken(token); // Store the token in local storage
-            console.log('Token stored in localStorage:', localStorage.getItem('token')); // Verify storage
-            authenticateUser(); // Update context state
-            navigate('/'); // Redirect to home page
+
+            if (token) {
+                localStorage.setItem('token', token);
+                storeToken(token); // Store the token in context
+                console.log('Token stored in localStorage:', localStorage.getItem('token')); // Verify storage
+                authenticateUser(); // Update context state
+                navigate('/'); // Redirect to home page
+            } else {
+                throw new Error('Token not received');
+            }
         } catch (error) {
+            console.error('Error details:', error); // Log full error details
             setErrorMessage(error.response?.data?.message || 'An error occurred');
         }
     };
