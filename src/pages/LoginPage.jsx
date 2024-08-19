@@ -29,7 +29,7 @@ function LoginPage() {
             console.log('Token stored in localStorage:', localStorage.getItem('token')); // Verify storage
             storeToken(token); // Store the token in context
             authenticateUser(); // Update context state
-            navigate('/'); // Redirect to home page
+            navigate('/');// Redirect to home page
         } catch (error) {
             console.error('Login error:', error); // Log the error
             setErrorMessage(error.response?.data?.message || 'An error occurred');
