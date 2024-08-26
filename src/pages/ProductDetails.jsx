@@ -28,7 +28,7 @@ const ProductDetails = () => {
 
         getProduct();
     }, [id]);
-
+  
     const handleReviewSubmit = async () => {
         if (!user) {
             alert('You need to be logged in to leave a review.');
@@ -40,10 +40,10 @@ const ProductDetails = () => {
             return;
         }
     
-        setLoading(true); // Set loading to true when submission starts
+        setLoading(true);
     
         try {
-            const response = await fetch(`/api/reviews/product/${id}/rate`, { // Ensure this URL matches the backend route
+            const response = await fetch(`/api/reviews/product/${id}/rate`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -53,11 +53,19 @@ const ProductDetails = () => {
             });
     
             if (!response.ok) {
-                const errorData = await response.text(); // Capture error response
-                throw new Error(errorData || 'Failed to submit review.');
+                const errorText = await response.text(); // Capture the response text
+                throw new Error(errorText || 'Failed to submit review.');
             }
     
-            const responseData = await response.json();
+            // Ensure response has valid JSON content
+            const responseText = await response.text();
+            let responseData;
+            try {
+                responseData = JSON.parse(responseText);
+            } catch (jsonError) {
+                throw new Error('Invalid JSON response from server.');
+            }
+    
             setProduct(await fetchProductById(id));
             setRating(0);
             setComment('');
@@ -65,11 +73,13 @@ const ProductDetails = () => {
             setTimeout(() => setSuccessMessage(''), 5000);
         } catch (error) {
             console.error('Failed to submit review:', error);
-            setError(error.message || 'Failed to submit review.');
+            setError(error.message || 'An unexpected error occurred.');
         } finally {
-            setLoading(false); // Set loading to false when submission ends
+            setLoading(false);
         }
     };
+    
+    
     
 
     if (error) return <p className="error-message">{error}</p>;
