@@ -9,6 +9,7 @@ function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(undefined);
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
     const { storeToken, authenticateUser } = useContext(AuthContext);
@@ -18,21 +19,33 @@ function LoginPage() {
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
+        const requestBody = { email, password };
+    
         try {
-            const response = await axios.post(`${API_URL}/auth/login`, {
-                email,
-                password
-            });
-            const token = response.data.authToken; // Token received from server
-            console.log('Token received:', token); // Verify the token
+            const response = await axios.post(`${API_URL}/auth/login`, requestBody);
+            const token = response.data.authToken; // JWT token received from server
+            
+            // Log token received from server
+            console.log('JWT token', token);
+            
+            // Store the token in localStorage
             localStorage.setItem('token', token);
             console.log('Token stored in localStorage:', localStorage.getItem('token')); // Verify storage
-            storeToken(token); // Store the token in context
-            authenticateUser(); // Update context state
-            navigate('/');// Redirect to home page
+            
+            // Store the token in context
+            storeToken(token);
+            
+            // Update authentication context
+            await authenticateUser();
+            
+            // Redirect to home page
+            navigate('/');
         } catch (error) {
             console.error('Login error:', error); // Log the error
             setErrorMessage(error.response?.data?.message || 'An error occurred');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -67,7 +80,9 @@ function LoginPage() {
                             required
                         />
                     </div>
-                    <button type="submit" className="login-button">Login</button>
+                    <button type="submit" className="login-button" disabled={isLoading}>
+                        {isLoading ? 'Logging in...' : 'Login'}
+                    </button>
                 </form>
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <p className="signup-prompt">Don’t have an account yet? <Link to="/signup" className="signup-link">Sign Up</Link></p>
