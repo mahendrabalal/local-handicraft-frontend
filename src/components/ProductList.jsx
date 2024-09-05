@@ -75,7 +75,7 @@ const ProductList = () => {
                         </li>
                     ))
                 ) : (
-                    <p>No products available</p>
+                    <p>Products Loading...</p>
                 )}
             </ul>
         </div>
